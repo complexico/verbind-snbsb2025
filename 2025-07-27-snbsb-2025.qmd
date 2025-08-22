@@ -1,0 +1,122 @@
+---
+title: "Luaran Penelitian di Era Digital: Studi kasus atas *VerbInd*, pangkalan data verba bahasa Indonesia"
+bibliography: references.bib
+csl: "https://raw.githubusercontent.com/citation-style-language/styles/refs/heads/master/unified-style-sheet-for-linguistics.csl"
+crossref:
+  tbl-title: "Tabel"
+  tbl-prefix: "Tabel"
+  fig-title: "Gambar"
+  fig-prefix: "Gambar"
+format:
+  html:
+    fig-width: 6
+    fig-dpi: 600
+    fig-asp: 0.618
+---
+
+# Pendahuluan {#sec-intro}
+
+```{r setup}
+#| include: false
+
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+library(tidyverse)
+library(happyr)
+```
+
+Beberapa kajian yang membahas pembangunan bank data leksikal (@afbo, @bond2014, @list2022, @rajeg_enolex_2024) ataupun morfologi (@denistia2023, @nomoto_malindo_2018).
+
+Pada bagian pembahasan:
+
+-   hal yang bisa dilakukan dengan *VerbInd* pada versi sekarang
+
+    -   mengumpulkan frekuensi suatu bentuk kata kerja berdasarkan tahun dan/atau kategori teks
+
+    -   mengkaji lebih lanjut profil morfologis suatu akar kata yang bisa dikaitkan dengan teori/deskripsi terdahulu. Misalnya pada contoh akar kata *ajar*. *VerbInd* membantu menampilkan frekuensi bentuk *mengajari*, *mengajarkan*, *mengajar* dan bentuk pasif *di-* -nya untuk kemudian frekuensi itu bisa dianalisis secara statistik
+
+-   
+
+# Metode
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+verba <- read_tsv("https://raw.githubusercontent.com/gederajeg/afiksasi-verba-bahasa-indonesia/main/verbs_main.txt") %>% 
+  select(year, 
+         form = word_form, 
+         freq = n, 
+         genres, 
+         morph = morphind, 
+         pref = pref_morphind, 
+         root = root_morphind, 
+         root_POS = root_pos_morphind, 
+         suff = suff_morphind,
+         affix = affix_morphind,
+         affix_wclass = affix_morphind_wclass
+         ) %>% 
+  mutate(across(c(pref, root_POS, suff, genres), as.factor))
+
+corpussize <- readr::read_lines("https://raw.githubusercontent.com/gederajeg/afiksasi-verba-bahasa-indonesia/refs/heads/main/corpussizes_all.txt") |> 
+  prettyNum(big.mark = ".", decimal.mark = ",")
+genresize <- readr::read_tsv("https://raw.githubusercontent.com/gederajeg/afiksasi-verba-bahasa-indonesia/refs/heads/main/genressizes.txt") |> 
+  mutate(genre_size = prettyNum(genre_size, big.mark = ".", decimal.mark = ","))
+yearsize <- readr::read_tsv("https://raw.githubusercontent.com/gederajeg/afiksasi-verba-bahasa-indonesia/refs/heads/main/yearsizes.txt") |> 
+  mutate(year_size = prettyNum(year_size, big.mark = ".", decimal.mark = ","))
+```
+
+Data yang terkandung dalam *VerbInd* berasal dari *Korpus Tata Bahasa Indonesia Kontemporer* (Korpus TBIK). Korpus ini dirancang oleh *Pusat Pengembangan dan Pelindungan Bahasa dan Sastra, Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi*. Perancangan Korpus TBIK merupakan bagian dari penyusunan tata bahasa Indonesia berbasis korpus yang diprakarsai oleh instansi yang sama. Untuk saat ini, Korpus TBIK belum diluncurkan secara terbuka untuk khalayak umum, namun tersedia untuk penulis kontributor tata bahasa Indonesia kontemporer.
+
+Korpus TBIK secara total berukuran `r corpussize` kali kemunculan kata. Komposisi teks yang terkandung dalam korpus TBIK terbagi menjadi `r length(genresize$genres)` kategori teks. @tbl-corpus-genre menampilkan ukuran tiap-tiap kategori teks.
+
+```{r}
+#| label: tbl-corpus-genre
+#| tbl-cap: "Ukuran Korpus TBIK berdasarkan kategori teks (*genre*)"
+
+genresize |> 
+  rename(`UKURAN` = genre_size,
+         `KATEGORI TEKS` = genres) |> 
+  knitr::kable()
+
+```
+
+Selain informasi kategori teks, Korpus TBIK juga mengandung informasi tahun yang terentang dari tahun 2011 hingga 2020 (yaitu periode 10 tahun; perhatikan @tbl-corpus-year).
+
+```{r}
+#| label: tbl-corpus-year
+#| tbl-cap: "Ukuran Korpus TBIK berdasarkan tahun/periode"
+
+yearsize |> 
+  mutate(year = as.character(year)) |> 
+  rename(`UKURAN` = year_size,
+         `TAHUN` = year) |> 
+  knitr::kable()
+```
+
+
+Pemecahan struktur internal kata secara morfologis awalnya dilakukan secara komputasional menggunakan *MorphInd: Indonesian Morphological Analyzer* [@larasati_indonesian_2011]^[Laman utama *MorphInd* adalah [https://septinalarasati.com/morphind/](https://septinalarasati.com/morphind/).].
+
+
+# Hasil
+
+# Pembahasan
+
+Versi daring dari *VerbInd* memungkinkan pencarian interaktif kata-kata yang terdapat di bank data tersebut. Sebagai contoh, kita dapat menyaring bank data berdasarkan kriteria tertentu yang dipilih melalui kolom-kolom tertentu. @fig-kan-2012-textbook berikut menunjukkan penyaringan kata-kata berakhiran -*kan* (lihat kolom `suff`, yang merupakan singkatan dari “*suffix*”) untuk tahun 2012 (lihat kolom `year`) pada ragam buku teks (kolom `genres`).
+
+![Penyaringan data verba berdasarkan kolom *`year`*, *`genres`*, dan *`suff`*](figs/kan-2012-textbook.png){#fig-kan-2012-textbook}
+
+Kemudian, melanjutkan kriteria penyaringan data seperti pada @fig-kan-2012-textbook, kita dapat menambah kriteria penyaringan pada kolom lain, misalnya kolom `root_POS` dan `root` (@fig-kan-2012-textbook-adj-tahan); kolom `root_POS` merujuk pada kategori kelas kata (*Part of Speech*) bentuk akar (*root*) sedangkan kolom `root` adalah bentuk akarnya.
+
+![Penyaringan data berdasarkan kolom *`root_POS`* dan *`root`*](figs/kan-2012-textbook-adj-tahan.png){#fig-kan-2012-textbook-adj-tahan}
+
+
+Data utama *VerbInd* tersedia dalam format `.tsv` atau teks biasa yang dapat diolah lebih lanjut secara komputasional untuk analisis linguistik kuantitatif. Seperti yang disampaikan pada @sec-intro, *VerbInd* adalah luaran bank data yang melandasi analisis korpus kuantitatif untuk afiksasi verba bahasa Indonesia, utamanya analisis produktifitas morfologis afiksasi verba [@rajeg2023a]. Data frekuensi verba dalam*VerbInd* juga telah digunakan dalam kajian morfosintaksis guna melihat preferensi leksikal diatesis aktif *meN-* dan pasif *di-* [@rajeg_kajian_2024].
+
+Dengan menggunakan peranti dan teknik komputasional yang sesuai (mis. bahasa pemrograman R), kita dapat mengolah data utama
+
+# Kesimpulan
+
+-   Platform digital memberikan wadah penyajian bank data secara lebih interaktif
+
+-   Rencana ke depan: mengubah versi HTML menjadi aplikasi web menggunakan *Shiny* untuk menampilkan analisis kuantitatif dan visualisasi interaktif.
+
+# Daftar Pusaka
