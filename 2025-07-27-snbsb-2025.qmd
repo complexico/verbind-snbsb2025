@@ -95,6 +95,10 @@ yearsize |>
 
 Pemecahan struktur internal kata secara morfologis awalnya dilakukan secara komputasional menggunakan *MorphInd: Indonesian Morphological Analyzer* [@larasati_indonesian_2011]^[Laman utama *MorphInd* adalah [https://septinalarasati.com/morphind/](https://septinalarasati.com/morphind/).].
 
+- tampilkan model luaran morphind
+
+Selanjutnya, penyuntingan manual dilakukan terhadap luaran morphind tersebut. Salah satu penyuntingan adalah mengubah kelas kata yang diberikan oleh *MorphInd*. 
+
 
 # Hasil
 
