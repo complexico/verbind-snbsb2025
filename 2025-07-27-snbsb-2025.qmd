@@ -121,17 +121,64 @@ yearsize |>
   knitr::kable()
 ```
 
-Pemecahan struktur internal kata secara morfologis awalnya dilakukan secara komputasional menggunakan *MorphInd: Indonesian Morphological Analyzer* [@larasati_indonesian_2011][^1].
+Pemecahan struktur internal kata secara morfologis awalnya dilakukan secara komputasional menggunakan *MorphInd: Indonesian Morphological Analyzer* [@larasati_indonesian_2011][^1]. @tbl-morphind-sample menampilkan nukilan luaran analisis *MorphInd* untuk kata berawalan *meN*-.
 
 [^1]: Laman utama *MorphInd* adalah <https://septinalarasati.com/morphind/>.
 
--   tampilkan model luaran morphind
+```{r prepare-morphind-output-sample, echo = FALSE, warning = FALSE, message = FALSE}
+#| label: tbl-morphind-sample
+#| tbl-cap: "Sampel luaran analisis MorphInd"
 
-Selanjutnya, penyuntingan manual dilakukan terhadap luaran morphind tersebut. Salah satu penyuntingan adalah mengubah kelas kata yang diberikan oleh *MorphInd*.
+
+# Prepare MorphInd output =========
+# verbdir <- dir("G:/My Drive/2022-07-30-tatabahasa-indonesia-kontemporer", full.names = TRUE)
+# me <- readr::read_rds(str_subset(verbdir, "me_freqlist_df\\.rds"))
+# me_sample <- slice_sample(me, n = 5) |>
+#   select(word_form, n, morphind, genres)
+# write_tsv(me_sample, "data/me_sample.tsv")
+me_sample <- read_tsv("data/me_sample.tsv")
+me_sample |> 
+  mutate(morphind = str_replace_all(morphind,
+                                    "\\<",
+                                    "\\\\<")) |> 
+  rename(Kata = word_form,
+         `Frek.` = n,
+         MorphInd = morphind,
+         Genre = genres) |> 
+  knitr::kable(row.names = TRUE)
+```
+
+Label "VSA" pada @tbl-morphind-sample adalah singkatan dari *verb* (V), *singular* (S), dan (diatesis) *active* (A). Sedangkan label "PS3" merujuk pada *personal pronoun* (P), *singular* (S), dan *third person* (3). Huruf kecil dalam "<.>" merujuk pada label kelas kata akar kata^[Daftar *tagset* lengkap dalam *MorphInd* dapat dilihat melalui tautan [https://septinalarasati.com/morphind/#tagset](https://septinalarasati.com/morphind/#tagset)]. *MorphInd* tidak selalu berhasil mengenali dan memecah struktur internal kata seperti ditunjukkan pada @tbl-unknown-morphind; luaran ini ditandai dengan label "_X--" dan "<x>".
+
+```{r morphind-unknown-tag, message = FALSE, warning = FALSE, echo = FALSE}
+#| label: tbl-unknown-morphind
+#| tbl-cap: "Luaran MorphInd yang tidak mengenali unsur pembentuk katanya"
+
+# verbdir <- dir("G:/My Drive/2022-07-30-tatabahasa-indonesia-kontemporer", full.names = TRUE)
+# morphind_unknown <- read_tsv(str_subset(verbdir, "more_editing_database\\.txt"))
+# morphind_unknown_sample <- slice_sample(morphind_unknown,
+#                                         n = 5)
+# write_tsv(morphind_unknown_sample, "data/morphind_unknown_sample.tsv")
+morphind_unknown_sample <- read_tsv("data/morphind_unknown_sample.tsv") |> 
+  select(-ROOT2, -root_pos_morphind, -dbase)
+morphind_unknown_sample |> 
+  mutate(morphind = str_replace_all(morphind,
+                                    "\\<",
+                                    "\\\\<")) |> 
+  rename(Kata = word_form,
+         MorphInd = morphind) |> 
+  knitr::kable(row.names = TRUE)
+```
+
+Untuk kasus seperti pada @tbl-unknown-morphind, penyuntingan dan identifikasi struktur internal kata dilakukan secara manual dilakukan terhadap luaran morphind tersebut^[Berkas kode pemrograman R yang mencatat perubahan dan penyuntingan yang dilakukan tersedia pada repositori GitHub [@rajeg_supplementary_verb_affix_2023]; perhatikan berkas kode R dengan inisial no `3-1-...`, `4-...`, dan `6-1-...`.].
 
 # Hasil
 
-# Pembahasan
+Penyiapan bank data verba bahasa Indonesia dari Korpus TBIK ditujukan untuk menjawab pertanyaan penelitian pada ranah morfologi bahasa Indonesia. Utamanya, kajian produktifitas afiksasi verba bahasa Indonesia hanya dapat dijawab secara sistematis dan terukur dengan keberadaan bank data raya verba bahasa Indonesia yang diperoleh dari korpus TBIK (*CITE BAAYEN study on morphological productivity*).
+
+Namun, luaran dari penelitian morfologi berbasis korpus tersebut tidak semata-mata berupa makalah ilmiah dan wawasan mutakhir terkait morfologi bahasa Indonesia, utamanya afiksasi verba. Keberadaan teknologi dan ruang digital memungkinkan pangkalan data suatu penelitian menjadi publikasi tersendiri mendampingi makalah ilmiahnya. Untuk bank data verba bahasa Indonesia, *VerbInd*, publikasi dilakukan dalam format laman daring terbuka agar dapat diakses masyarakat luas [@rajeg_verbind_2025]. Secara teknis, laman *VerbInd* dibangun melalui bahasa pemrograman R [@rcore_2025]. @sec-discussion berikut mengulas beberapa fitur yang dimiliki *VerbInd* ketika diakses (i) dalam format laman daring dan (ii) dalam format data mentahnya (yaitu format `.txt` sebelum disajikan secara daring), yang dapat diolah lebih lanjut untuk menjawab pertanyaan penelitian terkait morfosintaksis.
+
+# Pembahasan {#sec-discussion}
 
 Versi daring dari *VerbInd* memungkinkan pencarian interaktif kata-kata yang terdapat di bank data tersebut^[Penting untuk diperhatikan bahwa makalah ini tidak menyatakan bahwa *VerbInd* secara utuh telah mencakup semua verba bahasa Indonesia.]. Sebagai contoh, kita dapat menyaring bank data berdasarkan kriteria tertentu yang dipilih melalui kolom-kolom tertentu. @fig-kan-2012-textbook berikut menunjukkan penyaringan kata-kata berakhiran -*kan* (lihat kolom `suff`, yang merupakan singkatan dari “*suffix*”) untuk tahun 2012 (lihat kolom `year`) pada ragam buku teks (kolom `genres`).
 
