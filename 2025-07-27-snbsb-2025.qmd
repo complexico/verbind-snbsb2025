@@ -81,7 +81,7 @@ Pada bagian pembahasan:
 
 -   
 
-# Metode
+# Metode {#sec-metode}
 
 ```{r message = FALSE, warning = FALSE, echo = FALSE}
 verba <- read_tsv("https://raw.githubusercontent.com/gederajeg/afiksasi-verba-bahasa-indonesia/main/verbs_main.txt") %>% 
@@ -190,9 +190,11 @@ Untuk kasus seperti pada @tbl-unknown-morphind, penyuntingan dan identifikasi st
 
 [^4]: Berkas kode pemrograman R yang mencatat perubahan dan penyuntingan yang dilakukan tersedia pada repositori GitHub [@rajeg_supplementary_verb_affix_2023]; perhatikan berkas kode R dengan inisial no `3-1-..`, `4-..`, dan `6-1-..`.
 
-# Hasil
+# Hasil {#sec-hasil}
 
-Penyiapan bank data verba bahasa Indonesia dari Korpus TBIK ditujukan untuk menjawab pertanyaan penelitian pada ranah morfologi bahasa Indonesia, salah satunya adalah produktifitas afiksasi verba [@rajeg2023a] dan nomina [@denistia2023a]. Kajian produktifitas morfologi [lihat @baayen_2009] dapat dijawab secara lebih sistematis dan terukur dengan keberadaan bank data raya verba bahasa Indonesia, seperti yang diperoleh dari korpus Tata Bahasa Indonesia Kontemporer (TBIK). Keberadaan TBIK memperkaya kajian produktifitas afiksasi karena mengikutkan dimensi jenis teks dan periode, dua variabel tambahan yang dimiliki oleh TBIK, selain ukuran besar dari TBIK.
+Penyiapan bank data verba bahasa Indonesia dari Korpus TBIK ditujukan untuk menjawab pertanyaan penelitian pada ranah morfologi bahasa Indonesia, salah satunya adalah produktifitas afiksasi verba [@rajeg2023a] dan nomina [@denistia2023a]. Kajian produktifitas morfologi [lihat @baayen_2009] dapat dijawab secara lebih sistematis dan terukur dengan keberadaan bank data raya verba bahasa Indonesia, seperti yang diperoleh dari korpus Tata Bahasa Indonesia Kontemporer (TBIK). Keberadaan TBIK memperkaya kajian produktifitas afiksasi karena mengikutkan dimensi jenis teks (@tbl-corpus-genre; @fig-prod-by-genre) dan periode (@tbl-corpus-year), dua variabel tambahan yang dimiliki oleh TBIK, selain ukuran TBIK yang terbilang besar.
+
+![Produktifitas sub-tipe afiksasi verba bahasa Indonesia utama berdasarkan jumlah bentukan kata unik (*type frequency*) di 12 ragam teks [@rajeg2023a, 17]](figs/10-sub-pattern-types-by-genre.png){#fig-prod-by-genre}
 
 Namun, luaran dari penelitian morfologi berbasis korpus tersebut tidak semata-mata berupa makalah ilmiah dan wawasan mutakhir terkait morfologi bahasa Indonesia. Keberadaan teknologi dan ruang digital memungkinkan pangkalan data suatu penelitian menjadi publikasi tersendiri guna mendampingi makalah ilmiahnya dan digunakan untuk penelitian lebih lanjut. Untuk bank data verba bahasa Indonesia, *VerbInd*, publikasi dilakukan dalam format laman daring terbuka agar dapat diakses masyarakat luas [@rajeg_verbind_2025]. Secara teknis, laman *VerbInd* dibangun melalui bahasa pemrograman R [@rcore_2025]. @sec-discussion berikut mengulas beberapa fitur yang dimiliki *VerbInd* ketika diakses (i) dalam format laman daring dan (ii) dalam format data mentahnya (yaitu format `.txt` sebelum disajikan secara daring), yang dapat diolah lebih lanjut untuk menjawab pertanyaan penelitian terkait morfosintaksis.
 
@@ -240,11 +242,22 @@ Untuk pengembangan selanjutnya, fitur yang diakomodir model database seperti *Ve
 Pembahasan selanjutnya mengulas kebermanfaatan data mentah yang melandasi *VerbInd* guna menjawab pertanyaan linguistik dengan pendekatan kuantitatif. 
 
 
-Data utama *VerbInd* tersedia terbuka dalam format `.txt` atau teks biasa (*plain text*) dengan tiap-tiap kolom dipisahkan oleh penanda `tab` [berkas bernama `verbs_main.txt` pada @rajeg_supplementary_verb_affix_2023] (@fig-verb-raw-db).
+Data utama *VerbInd* tersedia terbuka dalam format `.txt` atau teks biasa (*plain text*) dengan tiap-tiap kolom dipisahkan oleh penanda `tab` [berkas bernama `verbs_main.txt` pada @rajeg_supplementary_verb_affix_2023] (@fig-verb-raw-db) dan dapat dibuka di program seperti *LibreOffice Calc* (@fig-verb-raw-libre).
 
-![Tampilan web data utama *VerbInd* [@rajeg_supplementary_verb_affix_2023]](figs/verb-raw-db.png){#fig-verb-raw-db}
 
-Format data seperti *tab-separated plain text* ini dapat diolah lebih lanjut secara komputasional untuk analisis linguistik kuantitatif dalam konteks kajian morfologi. Seperti yang disampaikan pada @sec-intro, *VerbInd* adalah luaran bank data yang melandasi analisis korpus kuantitatif untuk afiksasi verba bahasa Indonesia, utamanya analisis produktifitas morfologis afiksasi verba [@rajeg2023a]. Data frekuensi verba dalam *VerbInd* juga telah digunakan dalam kajian morfosintaksis guna melihat preferensi leksikal diatesis aktif *meN-* dan pasif *di-* [@rajeg_kajian_2024].
+
+::: {#fig-verb-raw-db layout-ncol=1}
+
+![Tampilan ketika dibuka di web](figs/verb-raw-db.png){#fig-verb-raw-web}
+
+![Tampilan ketika dibuka di LibreOffice Calc](figs/verb-raw-libre.png){#fig-verb-raw-libre}
+
+Tampilan data utama *VerbInd* [@rajeg_supplementary_verb_affix_2023]
+
+:::
+
+
+Format data seperti *tab-separated plain text* pada (@fig-verb-raw-web) dapat diolah lebih lanjut secara komputasional untuk analisis linguistik kuantitatif dalam konteks kajian morfologi. Seperti yang disampaikan pada @sec-intro, *VerbInd* adalah luaran bank data yang melandasi analisis korpus kuantitatif untuk afiksasi verba bahasa Indonesia, utamanya analisis produktifitas morfologis afiksasi verba [@rajeg2023a]. Data frekuensi verba dalam *VerbInd* juga telah digunakan dalam kajian morfosintaksis guna melihat preferensi leksikal diatesis aktif *meN-* dan pasif *di-* [@rajeg_kajian_2024].
 
 Dengan menggunakan peranti dan teknik komputasional yang sesuai (mis. bahasa pemrograman R), kita dapat mengolah data utama
 
