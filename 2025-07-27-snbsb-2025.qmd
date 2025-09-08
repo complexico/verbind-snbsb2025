@@ -28,6 +28,7 @@ copyright:
 funding: "The author received no specific funding for this work."
 citation: true
 google-scholar: true
+css: style.css
 bibliography: references.bib
 csl: "unified-style-sheet-for-linguistics.csl"
 crossref:
@@ -38,9 +39,22 @@ crossref:
   fig-prefix: "Gambar"
 format:
   html:
+    number-sections: true
+    link-citations: true
+    link-bibliography: true
     fig-width: 6
-    fig-dpi: 600
+    fig-align: left
     fig-asp: 0.618
+    fig-dpi: 600
+  docx:
+    number-sections: true
+    fig-width: 6
+    fig-align: left
+    fig-asp: 0.618
+    fig-dpi: 600
+    link-citations: true
+    link-bibliography: true
+    reference-doc: mytemp.docx
 ---
 
 # Pendahuluan {#sec-intro}
@@ -93,7 +107,9 @@ yearsize <- readr::read_tsv("https://raw.githubusercontent.com/gederajeg/afiksas
   mutate(year_size = prettyNum(year_size, big.mark = ".", decimal.mark = ","))
 ```
 
-Data yang terkandung dalam *VerbInd* berasal dari *Korpus Tata Bahasa Indonesia Kontemporer* (Korpus TBIK). Korpus ini dirancang oleh *Pusat Pengembangan dan Pelindungan Bahasa dan Sastra, Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi*. Perancangan Korpus TBIK merupakan bagian dari penyusunan tata bahasa Indonesia berbasis korpus yang diprakarsai oleh instansi yang sama^[Tautan rekaman seminar hasil untuk topik morfologi  [https://www.youtube.com/live/fD70Nhs6vug?si=XTR1Zb3rGyfTKiCl](https://www.youtube.com/live/fD70Nhs6vug?si=XTR1Zb3rGyfTKiCl) dan sintaksis [https://www.youtube.com/live/y7E0vey1Xsk?si=HSwLV87PDBIIzc6t](https://www.youtube.com/live/y7E0vey1Xsk?si=HSwLV87PDBIIzc6t).]. Untuk saat ini, Korpus TBIK belum diluncurkan secara terbuka untuk khalayak umum, namun tersedia untuk penulis kontributor tata bahasa Indonesia kontemporer.
+Data yang terkandung dalam *VerbInd* berasal dari *Korpus Tata Bahasa Indonesia Kontemporer* (Korpus TBIK). Korpus ini dirancang oleh *Pusat Pengembangan dan Pelindungan Bahasa dan Sastra, Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi*. Perancangan Korpus TBIK merupakan bagian dari penyusunan tata bahasa Indonesia berbasis korpus yang diprakarsai oleh instansi yang sama[^1]. Untuk saat ini, Korpus TBIK belum diluncurkan secara terbuka untuk khalayak umum, namun tersedia untuk penulis kontributor tata bahasa Indonesia kontemporer.
+
+[^1]: Tautan rekaman seminar hasil untuk topik morfologi <https://www.youtube.com/live/fD70Nhs6vug?si=XTR1Zb3rGyfTKiCl> dan sintaksis <https://www.youtube.com/live/y7E0vey1Xsk?si=HSwLV87PDBIIzc6t>.
 
 Korpus TBIK secara total berukuran `r corpussize` kali kemunculan kata. Komposisi teks yang terkandung dalam korpus TBIK terbagi menjadi `r length(genresize$genres)` kategori teks. @tbl-corpus-genre menampilkan ukuran tiap-tiap kategori teks.
 
@@ -121,9 +137,9 @@ yearsize |>
   knitr::kable()
 ```
 
-Pemecahan struktur internal kata secara morfologis awalnya dilakukan secara komputasional menggunakan *MorphInd: Indonesian Morphological Analyzer* [@larasati_indonesian_2011][^1]. @tbl-morphind-sample menampilkan nukilan luaran analisis *MorphInd* untuk kata berawalan *meN*-.
+Pemecahan struktur internal kata secara morfologis awalnya dilakukan secara komputasional menggunakan *MorphInd: Indonesian Morphological Analyzer* [@larasati_indonesian_2011][^2]. @tbl-morphind-sample menampilkan nukilan luaran analisis *MorphInd* untuk kata berawalan *meN*-.
 
-[^1]: Laman utama *MorphInd* adalah <https://septinalarasati.com/morphind/>.
+[^2]: Laman utama *MorphInd* adalah <https://septinalarasati.com/morphind/>.
 
 ```{r prepare-morphind-output-sample, echo = FALSE, warning = FALSE, message = FALSE}
 #| label: tbl-morphind-sample
@@ -141,14 +157,14 @@ me_sample |>
   mutate(morphind = str_replace_all(morphind,
                                     "\\<",
                                     "\\\\<")) |> 
-  rename(Kata = word_form,
-         `Frek.` = n,
-         MorphInd = morphind,
-         Genre = genres) |> 
-  knitr::kable(row.names = TRUE)
+  select(KATA = word_form,
+         MORPHIND = morphind) |> 
+  knitr::kable(row.names = FALSE)
 ```
 
-Label "VSA" pada @tbl-morphind-sample adalah singkatan dari *verb* (V), *singular* (S), dan (diatesis) *active* (A). Sedangkan label "PS3" merujuk pada *personal pronoun* (P), *singular* (S), dan *third person* (3). Huruf kecil dalam "<.>" merujuk pada label kelas kata akar kata^[Daftar *tagset* lengkap dalam *MorphInd* dapat dilihat melalui tautan [https://septinalarasati.com/morphind/#tagset](https://septinalarasati.com/morphind/#tagset)]. *MorphInd* tidak selalu berhasil mengenali dan memecah struktur internal kata seperti ditunjukkan pada @tbl-unknown-morphind; luaran ini ditandai dengan label "_X--" dan "<x>".
+Label "VSA" pada @tbl-morphind-sample adalah singkatan dari *verb* (V), *singular* (S), dan (diatesis) *active* (A). Sedangkan label "PS3" merujuk pada *personal pronoun* (P), *singular* (S), dan *third person* (3). Huruf kecil dalam "\<.\>" merujuk pada label kelas kata akar kata[^3]. *MorphInd* tidak selalu berhasil mengenali dan memecah struktur internal kata seperti ditunjukkan pada @tbl-unknown-morphind; luaran ini ditandai dengan label "\_X--" dan "<x>".
+
+[^3]: Daftar *tagset* lengkap dalam *MorphInd* dapat dilihat melalui tautan <https://septinalarasati.com/morphind/#tagset>
 
 ```{r morphind-unknown-tag, message = FALSE, warning = FALSE, echo = FALSE}
 #| label: tbl-unknown-morphind
@@ -165,22 +181,26 @@ morphind_unknown_sample |>
   mutate(morphind = str_replace_all(morphind,
                                     "\\<",
                                     "\\\\<")) |> 
-  rename(Kata = word_form,
-         MorphInd = morphind) |> 
-  knitr::kable(row.names = TRUE)
+  rename(KATA = word_form,
+         MORPHIND = morphind) |> 
+  knitr::kable(row.names = FALSE)
 ```
 
-Untuk kasus seperti pada @tbl-unknown-morphind, penyuntingan dan identifikasi struktur internal kata dilakukan secara manual dilakukan terhadap luaran morphind tersebut^[Berkas kode pemrograman R yang mencatat perubahan dan penyuntingan yang dilakukan tersedia pada repositori GitHub [@rajeg_supplementary_verb_affix_2023]; perhatikan berkas kode R dengan inisial no `3-1-...`, `4-...`, dan `6-1-...`.].
+Untuk kasus seperti pada @tbl-unknown-morphind, penyuntingan dan identifikasi struktur internal kata dilakukan secara manual dilakukan terhadap luaran morphind tersebut[^4].
+
+[^4]: Berkas kode pemrograman R yang mencatat perubahan dan penyuntingan yang dilakukan tersedia pada repositori GitHub [@rajeg_supplementary_verb_affix_2023]; perhatikan berkas kode R dengan inisial no `3-1-..`, `4-..`, dan `6-1-..`.
 
 # Hasil
 
-Penyiapan bank data verba bahasa Indonesia dari Korpus TBIK ditujukan untuk menjawab pertanyaan penelitian pada ranah morfologi bahasa Indonesia. Utamanya, kajian produktifitas afiksasi verba bahasa Indonesia hanya dapat dijawab secara sistematis dan terukur dengan keberadaan bank data raya verba bahasa Indonesia yang diperoleh dari korpus TBIK (*CITE BAAYEN study on morphological productivity*).
+Penyiapan bank data verba bahasa Indonesia dari Korpus TBIK ditujukan untuk menjawab pertanyaan penelitian pada ranah morfologi bahasa Indonesia, salah satunya adalah produktifitas afiksasi verba [@rajeg2023a] dan nomina [@denistia2023a]. Kajian produktifitas morfologi [lihat @baayen_2009] dapat dijawab secara lebih sistematis dan terukur dengan keberadaan bank data raya verba bahasa Indonesia, seperti yang diperoleh dari korpus Tata Bahasa Indonesia Kontemporer (TBIK). Keberadaan TBIK memperkaya kajian produktifitas afiksasi karena mengikutkan dimensi jenis teks dan periode, dua variabel tambahan yang dimiliki oleh TBIK, selain ukuran besar dari TBIK.
 
-Namun, luaran dari penelitian morfologi berbasis korpus tersebut tidak semata-mata berupa makalah ilmiah dan wawasan mutakhir terkait morfologi bahasa Indonesia, utamanya afiksasi verba. Keberadaan teknologi dan ruang digital memungkinkan pangkalan data suatu penelitian menjadi publikasi tersendiri mendampingi makalah ilmiahnya. Untuk bank data verba bahasa Indonesia, *VerbInd*, publikasi dilakukan dalam format laman daring terbuka agar dapat diakses masyarakat luas [@rajeg_verbind_2025]. Secara teknis, laman *VerbInd* dibangun melalui bahasa pemrograman R [@rcore_2025]. @sec-discussion berikut mengulas beberapa fitur yang dimiliki *VerbInd* ketika diakses (i) dalam format laman daring dan (ii) dalam format data mentahnya (yaitu format `.txt` sebelum disajikan secara daring), yang dapat diolah lebih lanjut untuk menjawab pertanyaan penelitian terkait morfosintaksis.
+Namun, luaran dari penelitian morfologi berbasis korpus tersebut tidak semata-mata berupa makalah ilmiah dan wawasan mutakhir terkait morfologi bahasa Indonesia. Keberadaan teknologi dan ruang digital memungkinkan pangkalan data suatu penelitian menjadi publikasi tersendiri guna mendampingi makalah ilmiahnya dan digunakan untuk penelitian lebih lanjut. Untuk bank data verba bahasa Indonesia, *VerbInd*, publikasi dilakukan dalam format laman daring terbuka agar dapat diakses masyarakat luas [@rajeg_verbind_2025]. Secara teknis, laman *VerbInd* dibangun melalui bahasa pemrograman R [@rcore_2025]. @sec-discussion berikut mengulas beberapa fitur yang dimiliki *VerbInd* ketika diakses (i) dalam format laman daring dan (ii) dalam format data mentahnya (yaitu format `.txt` sebelum disajikan secara daring), yang dapat diolah lebih lanjut untuk menjawab pertanyaan penelitian terkait morfosintaksis.
 
 # Pembahasan {#sec-discussion}
 
-Versi daring dari *VerbInd* memungkinkan pencarian interaktif kata-kata yang terdapat di bank data tersebut^[Penting untuk diperhatikan bahwa makalah ini tidak menyatakan bahwa *VerbInd* secara utuh telah mencakup semua verba bahasa Indonesia.]. Sebagai contoh, kita dapat menyaring bank data berdasarkan kriteria tertentu yang dipilih melalui kolom-kolom tertentu. @fig-kan-2012-textbook berikut menunjukkan penyaringan kata-kata berakhiran -*kan* (lihat kolom `suff`, yang merupakan singkatan dari “*suffix*”) untuk tahun 2012 (lihat kolom `year`) pada ragam buku teks (kolom `genres`).
+Versi daring dari *VerbInd* memungkinkan pencarian interaktif kata-kata yang terdapat di bank data tersebut[^5]. Sebagai contoh, kita dapat menyaring bank data berdasarkan kriteria tertentu yang dipilih melalui kolom-kolom tertentu. @fig-kan-2012-textbook berikut menunjukkan penyaringan kata-kata berakhiran -*kan* (lihat kolom `suff`, yang merupakan singkatan dari “*suffix*”) untuk tahun 2012 (lihat kolom `year`) pada ragam buku teks (kolom `genres`).
+
+[^5]: Penting untuk diperhatikan bahwa makalah ini tidak menyatakan bahwa *VerbInd* secara utuh telah mencakup semua verba bahasa Indonesia.
 
 ![Penyaringan data verba berdasarkan kolom *`year`*, *`genres`*, dan *`suff`*](figs/kan-2012-textbook.png){#fig-kan-2012-textbook}
 
@@ -197,15 +217,34 @@ thn <- verba |>
          suff == "kan")
 ```
 
-
-
 @fig-kan-2012-textbook-adj-tahan menunjukkan penyaringan data untuk kelas kata **a**jektiva pada kolom `root_POS`, khususnya untuk bentuk *tahan* (kolom `root`). Dari luaran kriteria penyaringan data pada @fig-kan-2012-textbook dan @fig-kan-2012-textbook-adj-tahan, kita dapat melihat bahwa terdapat dua bentuk (kolom `form`) kata turunan untuk akar kata ajektiva *tahan* yang diikuti akhiran *-kan* beserta frekuensinya (kolom `freq`) pada sub-korpus buku teks di tahun 2012: bentuk aktif *mempertahankan* secara signifikan lebih kerap digunakan (N=`r pull(filter(thn, str_detect(form, "^mem")), freq)`) dibandinkan bentuk pasif *dipertahankan* (N=`r pull(filter(thn, str_detect(form, "^diper")), freq)`) (*p*~Binomial~ ~two-tailed~ = `r toupper(format(binom.test(thn$freq)$p.value, scientific = TRUE, digits = 3))`).
 
+Format *database* seperti *VerbInd* memungkinkan pencarian unsur pembentuk kata yang lebih spesifik, seperti menyaring bentukan kata berdasarkan afiks tertentu (@fig-kan-2012-textbook). Sebaliknya, fitur ini belum tersedia pada Kamus Besar Bahasa Indonesia (KBBI) edisi ke-6 versi daring. Pengguna terdaftar untuk KBBI VI daring dapat mencari bentuk afiks tertentu (@fig-affix-search1) namun ketika afiks tersebut dipilih (@fig-affix-search2), pengguna akan dibawa ke entri definisi afiks tersebut (@fig-affix-search3), daripada ditampilkan semua bentukan kata dengan afiks yang dipilih.
 
-Dibandingkan kamus daring, misalnya Kamus Besar Bahasa Indonesia (KBBI) edisi ke-6 versi daring, format *database* seperti *VerbInd* memungkinkan pencarian unsur pembentuk kata yang lebih spesifik, seperti menyaring bentukan kata berdasarkan afiks tertentu. Pengguna terdaftar untuk KBBI VI daring utamanya dapat mencari bentuk kata utuh (baik akar maupun turunan), dan juga bentuk lain seperti singkatan, frasa, dan peribahasa.
+::: {#fig-affix-search-kbbi layout-ncol=1}
+
+![Pilih suatu kategori afiks](figs/kbbi-affix-search-01.png){#fig-affix-search1}
+
+![Bentuk afiks yang dipilih](figs/kbbi-affix-search-02.png){#fig-affix-search2}
+
+![Entri utama suatu afiks](figs/kbbi-affix-search-03.png){#fig-affix-search3}
+
+Pencarian kategori afiks di Kamus Besar Bahasa Indonesia (KBBI) VI Daring
+
+:::
+
+Untuk pengembangan selanjutnya, fitur yang diakomodir model database seperti *VerbInd* (mengeluarkan semua bentukan kata dengan afiks tertentu) dapat dipadukan dengan fitur kamus daring seperti KBBI VI daring (yang mengandung definisi/fungsi suatu afiks serta contoh-contoh kalimat penggunaan nyata kata turunan dengan afiks tertentu). 
 
 
-Data utama *VerbInd* tersedia terbuka dalam format `.txt` atau teks biasa [berkas bernama `verbs_main.txt` pada @rajeg_supplementary_verb_affix_2023]. Format data seperti ini dapat diolah lebih lanjut secara komputasional untuk analisis linguistik kuantitatif. Seperti yang disampaikan pada @sec-intro, *VerbInd* adalah luaran bank data yang melandasi analisis korpus kuantitatif untuk afiksasi verba bahasa Indonesia, utamanya analisis produktifitas morfologis afiksasi verba [@rajeg2023a]. Data frekuensi verba dalam *VerbInd* juga telah digunakan dalam kajian morfosintaksis guna melihat preferensi leksikal diatesis aktif *meN-* dan pasif *di-* [@rajeg_kajian_2024].
+
+Pembahasan selanjutnya mengulas kebermanfaatan data mentah yang melandasi *VerbInd* guna menjawab pertanyaan linguistik dengan pendekatan kuantitatif. 
+
+
+Data utama *VerbInd* tersedia terbuka dalam format `.txt` atau teks biasa (*plain text*) dengan tiap-tiap kolom dipisahkan oleh penanda `tab` [berkas bernama `verbs_main.txt` pada @rajeg_supplementary_verb_affix_2023] (@fig-verb-raw-db).
+
+![Tampilan web data utama *VerbInd* [@rajeg_supplementary_verb_affix_2023]](figs/verb-raw-db.png){#fig-verb-raw-db}
+
+Format data seperti *tab-separated plain text* ini dapat diolah lebih lanjut secara komputasional untuk analisis linguistik kuantitatif dalam konteks kajian morfologi. Seperti yang disampaikan pada @sec-intro, *VerbInd* adalah luaran bank data yang melandasi analisis korpus kuantitatif untuk afiksasi verba bahasa Indonesia, utamanya analisis produktifitas morfologis afiksasi verba [@rajeg2023a]. Data frekuensi verba dalam *VerbInd* juga telah digunakan dalam kajian morfosintaksis guna melihat preferensi leksikal diatesis aktif *meN-* dan pasif *di-* [@rajeg_kajian_2024].
 
 Dengan menggunakan peranti dan teknik komputasional yang sesuai (mis. bahasa pemrograman R), kita dapat mengolah data utama
 
@@ -213,8 +252,8 @@ Dengan menggunakan peranti dan teknik komputasional yang sesuai (mis. bahasa pem
 
 -   Platform digital memberikan wadah penyajian bank data secara lebih interaktif
 
-- Perkembangan kajian linguistik mengandalkan data raya dan peranti komputasional memungkinkan luaran penelitian selain luaran tradisional (seperti artikel ilmiah) namun juga luaran penelitian mutakhir berorientasi teknologi seperti bank data (CITE LEXIBANK), peranti lunak (MORPHIND + PARACORP), ataupun tutorial komputasional .
+-   Perkembangan kajian linguistik mengandalkan data raya dan peranti komputasional memungkinkan luaran penelitian selain luaran tradisional (seperti artikel ilmiah) namun juga luaran penelitian mutakhir berorientasi teknologi seperti bank data (CITE LEXIBANK), peranti lunak (MORPHIND + PARACORP), ataupun tutorial komputasional .
 
 -   Rencana ke depan: mengubah versi HTML menjadi aplikasi web menggunakan *Shiny* untuk menampilkan analisis kuantitatif dan visualisasi interaktif.
 
-# Daftar Pusaka
+# Daftar Pusaka {-}
