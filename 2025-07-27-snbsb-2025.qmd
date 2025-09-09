@@ -1,5 +1,5 @@
 ---
-title: "Luaran Penelitian Linguistik di Era Digital: Studi kasus atas *VerbInd*, pangkalan data verba bahasa Indonesia"
+title: "Luaran Penelitian Linguistik Non-Tradisional di Era Digital: Studi Kasus atas *VerbInd*, Pangkalan Data Verba Bahasa Indonesia Berbasis Korpus"
 date: "2025-07-27"
 author:
   - name: 
@@ -17,10 +17,10 @@ abstract: |
   An abstract here...
 keywords:
   - humaniora digital
-  - luaran penelitian
-  - linguistik digital
+  - linguistik komputasional
+  - linguistik korpus
+  - linguistik kuantitatif
   - VerbInd
-  - pangkalan data
 license: "CC BY-NC-SA"
 copyright: 
   holder: Gede Primahadi W. Rajeg
@@ -69,6 +69,8 @@ library(tidyverse)
 library(happyr)
 ```
 
+Secara tradisional, mekanisme penilaian hasil penelitian utamanya (i) terbatas pada jenis luaran berupa tulisan jurnal dan buku (dengan tinjauan sejawat) [@engels_socsci_2022, 2; @hurrell_DORA_2023, 3], dan (ii) menitikberatkan pada indeksasi bibliometrik (seperti pada *Web of Science* atau *Scopus*, yang tampak berguna untuk ilmu pengetahuan alam [seperti Kimia dan Farmasi/*Medicine*], namun sulit untuk digunakan dalam menilai dampak sosial dari luaran penelitian bidang ilmu sosial humaniora^[[https://enressh.eu/working-group-3/objectives/](https://enressh.eu/working-group-3/objectives/)] [@loprieno_measurer_2016, 15-16; @engels_socsci_2022, 2]). Perkembangan termutakhir ekosistem riset abad 21 mulai memperluas (i) cakupan jenis luaran penelitian (yang tidak hanya berupa tulisan ilmiah dalam jurnal dan buku) dan (ii) butir-butir yang perlu dipertimbangkan dalam penilaian performa penelitian (yang tidak semata-mata menomorsatukan indeksasi numerik)^[Untuk informasi lebih lanjut, kunjungi juga laman *San Francisco Declaration on Research Assessment* ([DORA](https://sfdora.org/)) [https://sfdora.org/read/](https://sfdora.org/read/), *European Network for Research Evaluation in the Social Sciences and Humanities* ([ENRESSH](https://enressh.eu/)), dan [*Leiden Manifesto*](https://www.leidenmanifesto.org/) [@hicks_Leiden_Manifesto_2015] (unduh naskah utuh *Leiden Manifesto* [di sini](https://www.researchgate.net/publication/275335177_The_Leiden_Manifesto_for_research_metrics)).] [@raff_DORA_2013; @hurrell_DORA_2023, 4-5].
+
 Beberapa kajian yang membahas pembangunan bank data leksikal (@afbo, @bond2014, @list2022, @rajeg_enolex_2024) ataupun morfologi (@denistia2023, @nomoto_malindo_2018).
 
 Pada bagian pembahasan:
@@ -109,7 +111,7 @@ yearsize <- readr::read_tsv("https://raw.githubusercontent.com/gederajeg/afiksas
 
 Data yang terkandung dalam *VerbInd* berasal dari *Korpus Tata Bahasa Indonesia Kontemporer* (Korpus TBIK). Korpus ini dirancang oleh *Pusat Pengembangan dan Pelindungan Bahasa dan Sastra, Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi*. Perancangan Korpus TBIK merupakan bagian dari penyusunan tata bahasa Indonesia berbasis korpus yang diprakarsai oleh instansi yang sama[^1]. Untuk saat ini, Korpus TBIK belum diluncurkan secara terbuka untuk khalayak umum, namun tersedia untuk penulis kontributor tata bahasa Indonesia kontemporer.
 
-[^1]: Tautan rekaman seminar hasil untuk topik morfologi <https://www.youtube.com/live/fD70Nhs6vug?si=XTR1Zb3rGyfTKiCl> dan sintaksis <https://www.youtube.com/live/y7E0vey1Xsk?si=HSwLV87PDBIIzc6t>.
+[^1]: Tautan rekaman seminar hasil untuk topik morfologi <https://www.youtube.com/live/fD70Nhs6vug?si=XTR1Zb3rGyfTKiCl>.
 
 Korpus TBIK secara total berukuran `r corpussize` kali kemunculan kata. Komposisi teks yang terkandung dalam korpus TBIK terbagi menjadi `r length(genresize$genres)` kategori teks. @tbl-corpus-genre menampilkan ukuran tiap-tiap kategori teks.
 
@@ -137,7 +139,13 @@ yearsize |>
   knitr::kable()
 ```
 
-Pemecahan struktur internal kata secara morfologis awalnya dilakukan secara komputasional menggunakan *MorphInd: Indonesian Morphological Analyzer* [@larasati_indonesian_2011][^2]. @tbl-morphind-sample menampilkan nukilan luaran analisis *MorphInd* untuk kata berawalan *meN*-.
+Secara total, terdapat `r read_lines("data/n_file_total.txt")` berkas teks (dalam format *plain text* [.txt] (@fig-berkas-tbik)) dari keseluruhan ragam teks dan tahun yang membentuk korpus TBIK.
+
+![Nukilan salah satu berkas teks (`A1ZZ11001.txt`) (sub-)korpus TBIK ragam Koran yang dibuka melalui peranti *Notepad* di Windows.](figs/nukilan-berkas-teks-TBIK.png){#fig-berkas-tbik}
+
+Dengan besarnya jumlah kata dan berkas korpus TBIK tersebut, pemrosesan secara progamatik perlu dilakukan. Penulis merancang kode pemrograman [@rajeg_supplementary_verb_affix_2023]^[[https://github.com/gederajeg/afiksasi-verba-bahasa-indonesia/blob/main/1-pre-processing-corpus.R](https://github.com/gederajeg/afiksasi-verba-bahasa-indonesia/blob/main/1-pre-processing-corpus.R)] untuk memproses berkas korpus TBIK tersebut menggunakan bahasa pemrograman R [@rcore_2025]. 
+
+Tahap pertama pengolahan data pra-analisis adalah menghasilkan daftar frekuensi kata (dari bentuk teks paragraf seperti pada @fig-berkas-tbik) untuk tiap ragam teks dan tiap tahun/periode. Tahap utama kedua adalah melakukan analisis (struktur internal) morfologis tiap-tiap kata, utamanya verba yang menjadi fokus penelitian. Pemecahan struktur internal kata secara morfologis awalnya dilakukan secara komputasional programatik menggunakan *MorphInd: Indonesian Morphological Analyzer* [@larasati_indonesian_2011][^2]. @tbl-morphind-sample menampilkan nukilan luaran analisis *MorphInd* untuk kata berawalan *meN*-.
 
 [^2]: Laman utama *MorphInd* adalah <https://septinalarasati.com/morphind/>.
 
@@ -192,7 +200,7 @@ Untuk kasus seperti pada @tbl-unknown-morphind, penyuntingan dan identifikasi st
 
 # Hasil {#sec-hasil}
 
-Penyiapan bank data verba bahasa Indonesia dari Korpus TBIK ditujukan untuk menjawab pertanyaan penelitian pada ranah morfologi bahasa Indonesia, salah satunya adalah produktifitas afiksasi verba [@rajeg2023a] dan nomina [@denistia2023a]. Kajian produktifitas morfologi [lihat @baayen_2009] dapat dijawab secara lebih sistematis dan terukur dengan keberadaan bank data raya verba bahasa Indonesia, seperti yang diperoleh dari korpus Tata Bahasa Indonesia Kontemporer (TBIK). Keberadaan TBIK memperkaya kajian produktifitas afiksasi karena mengikutkan dimensi jenis teks (@tbl-corpus-genre; @fig-prod-by-genre) dan periode (@tbl-corpus-year), dua variabel tambahan yang dimiliki oleh TBIK, selain ukuran TBIK yang terbilang besar.
+Penyiapan bank data leksikal bahasa Indonesia dari Korpus TBIK ditujukan untuk menjawab pertanyaan penelitian pada ranah morfologi bahasa Indonesia, salah satunya adalah produktifitas afiksasi verba [@rajeg2023a] dan nomina [@denistia2023a]^[Bahan pendukung dan data untuk Denistia & Rajeg [-@denistia2023a] dapat diakses melalui [https://osf.io/84zfw/](https://osf.io/84zfw/).]. Kajian produktifitas morfologi [lihat @baayen_2009] dapat dijawab secara lebih sistematis dan terukur dengan keberadaan bank data raya verba bahasa Indonesia, seperti yang diperoleh dari korpus Tata Bahasa Indonesia Kontemporer (TBIK). Keberadaan TBIK memperkaya kajian produktifitas afiksasi karena mengikutkan dimensi jenis teks (@tbl-corpus-genre; @fig-prod-by-genre) dan periode (@tbl-corpus-year), dua variabel tambahan yang dimiliki oleh TBIK, selain ukuran TBIK yang terbilang besar.
 
 ![Produktifitas sub-tipe afiksasi verba bahasa Indonesia utama berdasarkan jumlah bentukan kata unik (*type frequency*) di 12 ragam teks [@rajeg2023a, 17]](figs/10-sub-pattern-types-by-genre.png){#fig-prod-by-genre}
 
@@ -219,7 +227,7 @@ thn <- verba |>
          suff == "kan")
 ```
 
-@fig-kan-2012-textbook-adj-tahan menunjukkan penyaringan data untuk kelas kata **a**jektiva pada kolom `root_POS`, khususnya untuk bentuk *tahan* (kolom `root`). Dari luaran kriteria penyaringan data pada @fig-kan-2012-textbook dan @fig-kan-2012-textbook-adj-tahan, kita dapat melihat bahwa terdapat dua bentuk (kolom `form`) kata turunan untuk akar kata ajektiva *tahan* yang diikuti akhiran *-kan* beserta frekuensinya (kolom `freq`) pada sub-korpus buku teks di tahun 2012: bentuk aktif *mempertahankan* secara signifikan lebih kerap digunakan (N=`r pull(filter(thn, str_detect(form, "^mem")), freq)`) dibandinkan bentuk pasif *dipertahankan* (N=`r pull(filter(thn, str_detect(form, "^diper")), freq)`) (*p*~Binomial~ ~two-tailed~ = `r toupper(format(binom.test(thn$freq)$p.value, scientific = TRUE, digits = 3))`).
+@fig-kan-2012-textbook-adj-tahan menunjukkan penyaringan data untuk kelas kata **a**jektiva pada kolom `root_POS`, khususnya untuk bentuk *tahan* (kolom `root`). Dari luaran kriteria penyaringan data pada @fig-kan-2012-textbook dan @fig-kan-2012-textbook-adj-tahan, kita dapat melihat bahwa terdapat dua bentuk (kolom `form`) kata turunan untuk akar kata ajektiva *tahan* yang diikuti akhiran *-kan* beserta frekuensinya (kolom `freq`) pada sub-korpus buku teks di tahun 2012: bentuk aktif *mempertahankan* secara signifikan lebih kerap digunakan (N=`r pull(filter(thn, str_detect(form, "^mem")), freq)`) dibandingkan bentuk pasif *dipertahankan* (N=`r pull(filter(thn, str_detect(form, "^diper")), freq)`) (*p*~Binomial~ ~two-tailed~ = `r toupper(format(binom.test(thn$freq)$p.value, scientific = TRUE, digits = 3))`).
 
 Format *database* seperti *VerbInd* memungkinkan pencarian unsur pembentuk kata yang lebih spesifik, seperti menyaring bentukan kata berdasarkan afiks tertentu (@fig-kan-2012-textbook). Sebaliknya, fitur ini belum tersedia pada Kamus Besar Bahasa Indonesia (KBBI) edisi ke-6 versi daring. Pengguna terdaftar untuk KBBI VI daring dapat mencari bentuk afiks tertentu (@fig-affix-search1) namun ketika afiks tersebut dipilih (@fig-affix-search2), pengguna akan dibawa ke entri definisi afiks tersebut (@fig-affix-search3), daripada ditampilkan semua bentukan kata dengan afiks yang dipilih.
 
@@ -239,10 +247,7 @@ Untuk pengembangan selanjutnya, fitur yang diakomodir model database seperti *Ve
 
 
 
-Pembahasan selanjutnya mengulas kebermanfaatan data mentah yang melandasi *VerbInd* guna menjawab pertanyaan linguistik dengan pendekatan kuantitatif. 
-
-
-Data utama *VerbInd* tersedia terbuka dalam format `.txt` atau teks biasa (*plain text*) dengan tiap-tiap kolom dipisahkan oleh penanda `tab` [berkas bernama `verbs_main.txt` pada @rajeg_supplementary_verb_affix_2023] (@fig-verb-raw-db) dan dapat dibuka di program seperti *LibreOffice Calc* (@fig-verb-raw-libre).
+Pembahasan berikutnya mengulas pemanfaatan lebih lanjut dari data mentah yang melandasi *VerbInd* guna menjawab pertanyaan linguistik melalui pendekatan kuantitatif. Data utama *VerbInd* tersedia terbuka dalam format `.txt` atau teks biasa (*plain text*) dengan tiap-tiap kolom dipisahkan oleh penanda `tab` [berkas bernama `verbs_main.txt` pada @rajeg_supplementary_verb_affix_2023] (@fig-verb-raw-db) dan dapat dibuka di program seperti *LibreOffice Calc* (@fig-verb-raw-libre).
 
 
 
@@ -257,7 +262,14 @@ Tampilan data utama *VerbInd* [@rajeg_supplementary_verb_affix_2023]
 :::
 
 
-Format data seperti *tab-separated plain text* pada (@fig-verb-raw-web) dapat diolah lebih lanjut secara komputasional untuk analisis linguistik kuantitatif dalam konteks kajian morfologi. Seperti yang disampaikan pada @sec-intro, *VerbInd* adalah luaran bank data yang melandasi analisis korpus kuantitatif untuk afiksasi verba bahasa Indonesia, utamanya analisis produktifitas morfologis afiksasi verba [@rajeg2023a]. Data frekuensi verba dalam *VerbInd* juga telah digunakan dalam kajian morfosintaksis guna melihat preferensi leksikal diatesis aktif *meN-* dan pasif *di-* [@rajeg_kajian_2024].
+Format data seperti *tab-separated plain text* pada (@fig-verb-raw-web) telah diolah secara komputasional untuk analisis linguistik kuantitatif dalam konteks kajian morfologi, utamanya analisis produktifitas morfologis afiksasi verba bahasa Indonesia [@rajeg2023a] (@fig-prod-by-genre), yang menjadi tujuan awal *VerbInd* (@sec-intro dan @sec-hasil).
+
+Pemanfaatan lain dari data mentah *VerbInd* adalah mengkaji interaksi antara unsur leksikal dan konstruksi gramatikal [@stefanowitsch_2009], dalam konteks kajian morfosintaksis kuantitatif bahasa Indonesia. Sebagai contoh, data frekuensi verba dalam *VerbInd* telah diolah lebih lanjut untuk membandingkan preferensi leksikal dua konstruksi diatesis bahasa Indonesia, yaitu diatesis aktif *meN-* dan pasif *di-* [@rajeg_kajian_2024]^[Pemanfaatan *VerbInd* ini disebutkan secara eksplisit pada [Bagian 3](https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-metodologi) dalam Rajeg & Artawa [-@rajeg_kajian_2024]. Kajian ini juga merupakan kerja lanjutan penyusunan Tata Bahasa Indonesia Kontemporer untuk topik "Sintaksis", yang seminarnya dapat disaksikan di kanal *YouTube* melalui [tautan ini](https://www.youtube.com/live/y7E0vey1Xsk?si=HSwLV87PDBIIzc6t).]. Untuk tujuan tersebut, Rajeg dan Artawa [-@rajeg_kajian_2024] menerapkan "Analisis Koleksem Khas" (*Distinctive Collexeme Analysis* [selanjutnya disebut DCA])^[Ulasan *Distinctive Collexeme Analysis* dalam bahasa Indonesia dapat dilihat dalam Rajeg & Artawa [-@rajeg_kajian_2024, Sub-bagian 4.3] melalui [tautan ini](https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-dca), Rajeg [-@rajeg_LI_2020], dan Rajeg & Rajeg [-@rajeg_koleksemkhas_2019]], salah satu ragam teknik kuantitatif di bawah payung metode "Analisis Kolostruksional" (*Collostructional Analysis*) [@stefanowitsch_collo_2013; @hilpert_collo_2014; @gries_collo_2023]. DCA dalam hal ini digunakan untuk mengukur ketimpangan statistik penggunaan suatu akar verba dengan diatesis *meN-* dan *di-*. Pengukuran statistik dalam DCA [@rajeg_kajian_2024, Sub-bagian 4.3.1] dilakukan untuk semua akar verba yang paling sedikit muncul sekali dengan salah satu dari kedua diatesis, dan pengukuran berulang inilah yang difasilitasi secara komputasional dengan merancang kode pemrograman melalui bahasa pemrograman R. 
+
+Hasil dari DCA adalah daftar "koleksem" akar verba yang khas secara statistik untuk suatu bentuk diatesis dibandingkan diatesis lainnya [@rajeg_kajian_2024, Tabel 3]^[Lihat [https://gederajeg.github.io/diatesis-bahasa-indonesia/#tbl-av-vs-di](https://gederajeg.github.io/diatesis-bahasa-indonesia/#tbl-av-vs-di).]. Daftar ini kemudian dapat dianalisis/diinterpretasikan secara kualitatif guna mencirikan perbedaan semantis konstruksi yang dibandingkan, dalam hal ini diatesis aktif dan pasif. Rajeg dan Artawa [-@rajeg_kajian_2024, Sub-bagian 4.3.2]^[Lihat [https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-dca-av-pass](https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-dca-av-pass).] menemukan bahwa diatesis aktif *meN-* cenderung lebih sering digunakan oleh sekelompok kategori verba yang bersifat 'agentif' dan 'dinamis' (misalnya *tuju*, *cari*, *buat*, *bantu*), sedangkan diatesis pasif *di-* menarik lebih banyak kategori verba yang bersifat 'statis' dan 'mental' (misalnya *isi*, *anggap*, *kenal*, *duga*) [bandingkan temuan kajian serupa dalam bahasa Inggris oleh @gries_distcoll_2004].
+
+
+
 
 Dengan menggunakan peranti dan teknik komputasional yang sesuai (mis. bahasa pemrograman R), kita dapat mengolah data utama
 
