@@ -1,5 +1,5 @@
 ---
-title: "Luaran Penelitian Linguistik Non-Tradisional di Era Digital: Studi Kasus atas *VerbInd*, Pangkalan Data Verba Bahasa Indonesia Berbasis Korpus"
+title: "Luaran Penelitian Non-Tradisional dalam Linguistik di Era Digital: Studi Kasus atas *VerbInd*, Pangkalan Data Verba Bahasa Indonesia Berbasis Korpus"
 date: "2025-07-27"
 author:
   - name: 
