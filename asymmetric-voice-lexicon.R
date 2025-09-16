@@ -1,8 +1,8 @@
 library(vcd)
 
-b <- c(pass = 746, av = 0)
-d <- c(pass = 59, av = 258)
-d2 <- c(pass = 68, av = 71)
+percaya <- c(pass = 746, av = 0)
+percaya_i <- c(pass = 59, av = 258)
+percaya_kan <- c(pass = 68, av = 71)
 mtx <- rbind(b, d, d2)
 rownames(mtx) <- c("percaya", "percaya-i", "percaya-kan")
 vcd::assoc(mtx, shade = TRUE)

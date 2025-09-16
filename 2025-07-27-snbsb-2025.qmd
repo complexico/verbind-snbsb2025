@@ -30,7 +30,7 @@ citation: true
 google-scholar: true
 css: style.css
 bibliography: references.bib
-csl: "unified-style-sheet-for-linguistics.csl"
+csl: "apa.csl"
 crossref:
   tbl-title: "Tabel"
   tbl-prefix: "Tabel"
@@ -75,7 +75,10 @@ Luaran penelitian non-tradisional secara luas meliputi di antaranya koleksi digi
 
 Pada bidang ilmu Linguistik, keberadaan luaran penelitian non-tradisional tersebut mulai meningkat. Beberapa contohnya adalah set data/bank data leksikal [@bond2014; @list2022; @kaipingLexiRumahOnlineLexical2018; @rajeg_enolex_2024], morfologi [@denistia2023; @nomoto_malindo_2018], ataupun pola gramatikal [@haspelmathCrossGram2025]. Peningkatan ini juga sejalan dengan perkembangan Sains Terbuka (*Open Science*) [@OpenScienceRoyal2025] dan permasalahan keilmuan secara umum, yaitu keterciptaan ulang sains (yaitu, isu *reproducibility*) [@baker1500ScientistsLift2016]. Dalam mengikuti perkembangan ekosistem riset terkini, sebuah manifesto terkait cara memberikan penghargaan/kredit (salah satunya dalam hal menyitir) terhadap jenis luaran non-tradisional bidang linguistik tersebut telah dihasilkan [@berez-kroekerReproducibleResearchLinguistics2018].
 
-Makalah ini menjelaskan bank data yang penulis hasilkan, yaitu *VerbInd* (Pangkalan Data Verba Bahasa Indonesia Berbasis Korpus) seiring dengan tujuan menjawab suatu pertanyaan penelitian. Hasil penelitian tersebut kemudian dituliskan menjadi luaran tradisional (artikel bab buku bunga rampai) namun menjadi entitas terpisah dari bank data yang mendampinginya.
+Makalah ini menjelaskan bank data yang penulis hasilkan, yaitu *VerbInd* (Pangkalan Data Verba Bahasa Indonesia Berbasis Korpus), sebagai suatu jenis luaran penelitian non-tradisional. Keberadaan *VerbInd* ditujukan untuk menjawab suatu pertanyaan penelitian, khususnya dalam bidang morfologi, utamanya produktifitas afiksasi verba bahasa Indonesia. 
+
+
+Hasil penelitian tersebut kemudian dituliskan menjadi luaran tradisional (artikel bab buku bunga rampai) namun menjadi entitas terpisah dari bank data yang mendampinginya.
 
 Pada bagian pembahasan:
 
@@ -251,7 +254,7 @@ Untuk pengembangan selanjutnya, fitur yang diakomodir model database seperti *Ve
 
 
 
-Pembahasan berikutnya mengulas pemanfaatan lebih lanjut dari data mentah yang melandasi *VerbInd* guna menjawab pertanyaan linguistik melalui pendekatan kuantitatif. Data utama *VerbInd* tersedia terbuka dalam format `.txt` atau teks biasa (*plain text*) dengan tiap-tiap kolom dipisahkan oleh penanda `tab` [berkas bernama `verbs_main.txt` pada @rajeg_supplementary_verb_affix_2023] (@fig-verb-raw-db) dan dapat dibuka di program seperti *LibreOffice Calc* (@fig-verb-raw-libre).
+Pembahasan berikutnya mengulas pemanfaatan lebih lanjut dari data yang melandasi *VerbInd* guna menjawab pertanyaan linguistik melalui pendekatan kuantitatif. Data utama *VerbInd* tersedia terbuka dalam format `.txt` atau teks biasa (*plain text*) dengan tiap-tiap kolom dipisahkan oleh penanda `tab` [berkas bernama `verbs_main.txt` pada @rajeg_supplementary_verb_affix_2023] (@fig-verb-raw-db) dan dapat dibuka di program seperti *LibreOffice Calc* (@fig-verb-raw-libre).
 
 
 
@@ -268,12 +271,35 @@ Tampilan data utama *VerbInd* [@rajeg_supplementary_verb_affix_2023]
 
 Format data seperti *tab-separated plain text* pada (@fig-verb-raw-web) telah diolah secara komputasional untuk analisis linguistik kuantitatif dalam konteks kajian morfologi, utamanya analisis produktifitas morfologis afiksasi verba bahasa Indonesia [@rajeg2023a] (@fig-prod-by-genre), yang menjadi tujuan awal *VerbInd* (@sec-intro dan @sec-hasil).
 
-Pemanfaatan lain dari data mentah *VerbInd* adalah mengkaji interaksi antara unsur leksikal dan konstruksi gramatikal [@stefanowitsch_2009], dalam konteks kajian morfosintaksis kuantitatif bahasa Indonesia. Sebagai contoh, data frekuensi verba dalam *VerbInd* telah diolah lebih lanjut untuk membandingkan preferensi leksikal dua konstruksi diatesis bahasa Indonesia, yaitu diatesis aktif *meN-* dan pasif *di-* [@rajeg_kajian_2024]^[Pemanfaatan *VerbInd* ini disebutkan secara eksplisit pada [Bagian 3](https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-metodologi) dalam Rajeg & Artawa [-@rajeg_kajian_2024]. Kajian ini juga merupakan kerja lanjutan penyusunan Tata Bahasa Indonesia Kontemporer untuk topik "Sintaksis", yang seminarnya dapat disaksikan di kanal *YouTube* melalui [tautan ini](https://www.youtube.com/live/y7E0vey1Xsk?si=HSwLV87PDBIIzc6t).]. Untuk tujuan tersebut, Rajeg dan Artawa [-@rajeg_kajian_2024] menerapkan "Analisis Koleksem Khas" (*Distinctive Collexeme Analysis* [selanjutnya disebut DCA])^[Ulasan *Distinctive Collexeme Analysis* dalam bahasa Indonesia dapat dilihat dalam Rajeg & Artawa [-@rajeg_kajian_2024, Sub-bagian 4.3] melalui [tautan ini](https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-dca), Rajeg [-@rajeg_LI_2020], dan Rajeg & Rajeg [-@rajeg_koleksemkhas_2019]], salah satu ragam teknik kuantitatif di bawah payung metode "Analisis Kolostruksional" (*Collostructional Analysis*) [@stefanowitsch_collo_2013; @hilpert_collo_2014; @gries_collo_2023]. DCA dalam hal ini digunakan untuk mengukur ketimpangan statistik penggunaan suatu akar verba dengan diatesis *meN-* dan *di-*. Pengukuran statistik dalam DCA [@rajeg_kajian_2024, Sub-bagian 4.3.1] dilakukan untuk semua akar verba yang paling sedikit muncul sekali dengan salah satu dari kedua diatesis, dan pengukuran berulang inilah yang difasilitasi secara komputasional dengan merancang kode pemrograman melalui bahasa pemrograman R. 
+Pemanfaatan lain dari data landasan dalam *VerbInd* adalah mengkaji interaksi antara unsur leksikal dan konstruksi gramatikal [@stefanowitsch_2009], dalam konteks kajian morfosintaksis kuantitatif bahasa Indonesia. Sebagai contoh, data frekuensi verba dalam *VerbInd* telah diolah lebih lanjut untuk membandingkan preferensi leksikal dua konstruksi diatesis bahasa Indonesia, yaitu diatesis aktif *meN-* dan pasif *di-* [@rajeg_kajian_2024]^[Pemanfaatan *VerbInd* ini disebutkan secara eksplisit pada [Bagian 3](https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-metodologi) dalam Rajeg & Artawa [-@rajeg_kajian_2024]. Kajian ini juga merupakan kerja lanjutan penyusunan Tata Bahasa Indonesia Kontemporer untuk topik "Sintaksis", yang seminarnya dapat disaksikan di kanal *YouTube* melalui [tautan ini](https://www.youtube.com/live/y7E0vey1Xsk?si=HSwLV87PDBIIzc6t).]. Untuk tujuan tersebut, Rajeg dan Artawa [-@rajeg_kajian_2024] menerapkan "Analisis Koleksem Khas" (*Distinctive Collexeme Analysis* [selanjutnya disebut DCA])^[Ulasan *Distinctive Collexeme Analysis* dalam bahasa Indonesia dapat dilihat dalam Rajeg & Artawa [-@rajeg_kajian_2024, Sub-bagian 4.3] melalui [tautan ini](https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-dca), Rajeg [-@rajeg_LI_2020], dan Rajeg & Rajeg [-@rajeg_koleksemkhas_2019]], salah satu ragam teknik kuantitatif di bawah payung metode "Analisis Kolostruksional" (*Collostructional Analysis*) [@stefanowitsch_collo_2013; @hilpert_collo_2014; @gries_collo_2023]. DCA dalam hal ini digunakan untuk mengukur ketimpangan statistik penggunaan suatu akar verba dengan diatesis *meN-* dan *di-*. Pengukuran statistik dalam DCA [@rajeg_kajian_2024, Sub-bagian 4.3.1] dilakukan untuk semua akar verba yang paling sedikit muncul sekali dengan salah satu dari kedua diatesis, dan pengukuran berulang inilah yang difasilitasi secara komputasional dengan merancang kode pemrograman melalui bahasa pemrograman R. 
 
-Hasil dari DCA adalah daftar "koleksem" akar verba yang khas secara statistik untuk suatu bentuk diatesis dibandingkan diatesis lainnya [@rajeg_kajian_2024, Tabel 3]^[Lihat [https://gederajeg.github.io/diatesis-bahasa-indonesia/#tbl-av-vs-di](https://gederajeg.github.io/diatesis-bahasa-indonesia/#tbl-av-vs-di).]. Daftar ini kemudian dapat dianalisis/diinterpretasikan secara kualitatif guna mencirikan perbedaan semantis konstruksi yang dibandingkan, dalam hal ini diatesis aktif dan pasif. Rajeg dan Artawa [-@rajeg_kajian_2024, Sub-bagian 4.3.2]^[Lihat [https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-dca-av-pass](https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-dca-av-pass).] menemukan bahwa diatesis aktif *meN-* cenderung lebih sering digunakan oleh sekelompok kategori verba yang bersifat 'agentif' dan 'dinamis' (misalnya *tuju*, *cari*, *buat*, *bantu*), sedangkan diatesis pasif *di-* menarik lebih banyak kategori verba yang bersifat 'statis' dan 'mental' (misalnya *isi*, *anggap*, *kenal*, *duga*) [bandingkan temuan kajian serupa dalam bahasa Inggris oleh @gries_distcoll_2004].
+Hasil dari DCA adalah daftar "koleksem" akar verba yang khas secara statistik untuk suatu bentuk diatesis dibandingkan diatesis lainnya [@rajeg_kajian_2024, Tabel 3]^[Lihat [https://gederajeg.github.io/diatesis-bahasa-indonesia/#tbl-av-vs-di](https://gederajeg.github.io/diatesis-bahasa-indonesia/#tbl-av-vs-di) untuk data lebih lengkap terbuka.]. Daftar ini kemudian dapat dianalisis/diinterpretasikan secara kualitatif guna mencirikan perbedaan semantis konstruksi yang dibandingkan, dalam hal ini diatesis aktif dan pasif. Rajeg dan Artawa [-@rajeg_kajian_2024, Sub-bagian 4.3.2]^[Lihat [https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-dca-av-pass](https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-dca-av-pass).] menemukan bahwa diatesis aktif *meN-* cenderung lebih sering digunakan oleh sekelompok kategori verba yang bersifat 'agentif' dan 'dinamis' (misalnya *tuju*, *cari*, *buat*, *bantu*), sedangkan diatesis pasif *di-* menarik lebih banyak kategori verba yang bersifat 'statis' dan 'mental' (misalnya *isi*, *anggap*, *kenal*, *duga*) [bandingkan temuan kajian serupa dalam bahasa Inggris oleh @gries_distcoll_2004].
+
+Data frekuensi *VerbInd* juga dapat digunakan untuk menentukan akar verba yang secara signifikan absen (atau diistilahkan dengan *negative evidence* [@bowerman_NoNegativeEvidence_1988; @stefanowitsch_NegativeEvidence_2006]) dari suatu konstruksi diatesis. Sebagai contoh, perhatikan @tbl-percaya terkait data frekuensi verba *percaya* (dan variasinya dengan akhiran -*i* dan -*kan*) pada diatesis aktif *meN*- dan pasif *di*- yang diperoleh dari *VerbInd* (lihat @fig-verbind-percaya-forms).
+
+```{r verbind-percaya-form}
+#| label: tbl-percaya
+#| tbl-cap: "Frekuensi bentuk diatesis dengan akar verba *percaya* dalam bentuk dasar/tanpa akhiran, diakhiri dengan -*i*, dan -*kan*"
+
+
+percaya <- c(pass = 746, av = 0)
+percaya_i <- c(pass = 59, av = 258)
+percaya_kan <- c(pass = 68, av = 71)
+mtx <- rbind(percaya, percaya_i, percaya_kan)
+rownames(mtx) <- c("percaya", "percaya-i", "percaya-kan")
+colnames(mtx) <- c("pass. *di*-", "av. *meN*-")
+knitr::kable(mtx)
+```
+
+![Nukilan penyaringan data dengan akar kata *percaya* dalam laman *VerbInd*](figs/verbind-percaya-forms.png){#fig-verbind-percaya-forms}
+
+```{r percaya-stat}
+percaya_chi <- chisq.test(mtx, correct = FALSE)
+```
 
 
 
+Dalam pandangan linguistik transformasional [mis. @radford_transformation_1988, 420*ff*], bentuk pasif (bahasa Inggris) merupakan hasil transformasi pergerakan nomina yang dalam struktur batin (*D*[*eep*] *Structure*) adalah objek pos-verbal dari struktur aktif verbanya. Akan tetapi, tidak semua bentuk pasif memiliki realisasi aktifnya, seperti bentuk *dipercaya*, yang frekuensinya paling tinggi pada @tbl-percaya dan tidak memiliki pasangan aktifnya, yaitu *mempercaya* (sehingga diberikan nilai frekuensi 0). Seberapa kuat dan signifikan tingkat ketiadaan (atau absennya) konstruksi aktif *mempercaya* ini bisa diukur secara kuantitatif [@stefanowitsch_NegativeEvidence_2006]. Secara statistik, terdapat ketimpangan frekuensi yang signifikan (*X*^2^=`r round(percaya_chi$statistic, 2)`; *df* = `r percaya_chi$parameter`; *p* < 0.0001) dan kuat (*Cramer's V* = `r round(vcd::assocstats(mtx)$cramer, 2)`) di antara bentuk verba dengan akar kata *percaya* pada @tbl-percaya.
 
 Dengan menggunakan peranti dan teknik komputasional yang sesuai (mis. bahasa pemrograman R), kita dapat mengolah data utama
 
