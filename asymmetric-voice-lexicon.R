@@ -1,9 +1,9 @@
 library(vcd)
 
-percaya <- c(pass = 746, av = 0)
-percaya_i <- c(pass = 59, av = 258)
-percaya_kan <- c(pass = 68, av = 71)
-mtx <- rbind(b, d, d2)
+percaya <- c(`di-` = 746, `meN-` = 0)
+percaya_i <- c(`di-` = 59, `meN-` = 258)
+percaya_kan <- c(`di-` = 68, `meN-` = 71)
+mtx <- rbind(percaya, percaya_i, percaya_kan)
 rownames(mtx) <- c("percaya", "percaya-i", "percaya-kan")
 vcd::assoc(mtx, shade = TRUE)
 vcd::assocstats(mtx)
