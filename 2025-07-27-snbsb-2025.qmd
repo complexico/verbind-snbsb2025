@@ -14,13 +14,13 @@ author:
       - name: Universitas Udayana
         department: Bachelor of English Literature
 abstract: | 
-  An abstract here...
+  The 21st-century research ecosystem highlights the importance of non-traditional outputs such as datasets and software, alongside articles and books. In the Humanities, digital technologies enable data to be presented more openly through online databases. This paper introduces *VerbInd*, an open-access online database of morphologically complex verbs in Indonesian, built from corpus texts and processed through computational morphological parsing with further manual verification and editing. The paper demonstrates the use of *VerbInd* in quantitative research on Indonesian verbal morphology and morphosyntax (particularly voice alternation), resulting in traditional outputs, namely book chapters. It also briefly compares *VerbInd* with the sixth edition of the online *Kamus Besar Bahasa Indonesia* (KBBI), emphasizing their potential complementarity as linguistic research resources.</br></br>Ekosistem penelitian abad ke-21 menekankan pentingnya luaran non-tradisional seperti dataset dan perangkat lunak, selain artikel dan buku. Dalam bidang Humaniora, teknologi digital mendukung penyajian data secara terbuka melalui pangkalan data daring. Artikel ini memperkenalkan *VerbInd*, pangkalan data daring terbuka untuk verba bahasa Indonesia, yang dibangun dari teks korpus dengan penguraian struktur-internal morfologis secara komputasional dan penyuntingan manual lanjutan. Pemanfaatannya ditunjukkan dalam penelitian kuantitatif morfologi verba dan morfosintaksis (utamanya alternasi diatesis) bahasa Indonesia, yang menghasilkan luaran tradisional berupa bab buku. Artikel ini juga membandingkan *VerbInd* dengan *Kamus Besar Bahasa Indonesia* (*KBBI*) daring edisi keenam, serta menekankan potensi keduanya untuk saling melengkapi sebagai sumber daya penelitian linguistik.
 keywords:
   - humaniora digital
   - linguistik komputasional
   - linguistik korpus
   - linguistik kuantitatif
-  - VerbInd
+  - basis data linguistik
 license: "CC BY-NC-SA"
 copyright: 
   holder: Gede Primahadi W. Rajeg
@@ -57,7 +57,7 @@ format:
     reference-doc: mytemp-humanis.docx
 ---
 
-# Pendahuluan {#sec-intro}
+# Pendahuluan^[Makalah ini adalah bentuk tulisan dari paparan penulis [@rajegLuaranPenelitianNonTradisional2025] sebagai (salah satu) narasumber utama pada [*Seminar Nasional Bahasa, Sastra, dan Budaya* (SNBSB)](https://www.instagram.com/p/DK4kRdNSgt3/?igsh=bm15Y3h4b3VnYzk1), 12 September 2025 di Fakultas Ilmu Budaya, Universitas Udayana. Penulis berterima kasih atas masukan dan pertanyaan dari peserta seminar serta Karlina Denisita (Universitas Sebelas Maret) sebagai kolaborator dalam membangun *VerbInd* yang disajikan dalam makalah ini. Rekaman paparan penulis tersedia terbuka pada tautan [https://youtu.be/xCaeV2jLvSo](https://youtu.be/xCaeV2jLvSo).] {#sec-intro}
 
 ```{r setup}
 #| include: false
@@ -73,14 +73,14 @@ Secara tradisional, mekanisme penilaian hasil penelitian utamanya (i) terbatas p
 
 Luaran penelitian non-tradisional secara luas meliputi di antaranya koleksi digital ("*digital collections*"), luaran "*Geographic Information System*" (GIS), bahan audiovisual, bank/set data ("*datasets*"), naskah pracetak ("*preprints*"), kode pemrograman ("*code*"), peranti lunak ("*software*"), atau algoritma ("*algorithm*") [@hurrell_DORA_2023, 3]. Hasil survei terhadap anggota *Global Research Council* (GRC) menunjukkan bahwa 76% dari responden GRC sudah melaksanakan penilaian terhadap luaran non-tradisional [@curryChangingRoleFunders, 35], yang mana kode pemrograman/peranti lunak/algoritma adalah jenis yang paling sering disebutkan (65%), diikuti oleh bank data (58%) [@curryChangingRoleFunders, 5, *Figure 4*].
 
-Makalah ini menampilkan satu contoh luaran penelitian non-tradisional dalam linguistik yang penulis hasilkan, yaitu *VerbInd* (Pangkalan Data Verba Bahasa Indonesia Berbasis Korpus) [@rajeg_verbind_2025]. Penjelasan yang dicakup (@sec-hasil) adalah fitur-fitur interaktif daring dan informasi yang terkandung dalam *VerbInd* (yaitu frekuensi bentuk verba menyeluruh dan berdasarkan tahun dan ragam teks/*genre* dan struktur morfologis dan sintaksis internal verba, seperti afiks dan kelas kata). Makalah ini juga secara ringkas mengulas perbedaan antara *VerbInd* dan *Kamus Besar Bahasa Indonesia* (KBBI) daring versi ke-6 (perhatikan @fig-affix-search-kbbi). Tahapan dalam menyusun *VerbInd* juga akan diulas terlebih dahulu (lihat @sec-metode).
+Makalah ini menampilkan satu contoh luaran penelitian non-tradisional dalam linguistik yang penulis hasilkan, yaitu *VerbInd* (Pangkalan Data Verba Bahasa Indonesia Berbasis Korpus) [@rajeg_verbind_2025]. Penjelasan yang dicakup (@sec-hasil-verbind) adalah fitur-fitur interaktif daring dan informasi yang terkandung dalam *VerbInd* (yaitu frekuensi bentuk verba menyeluruh dan berdasarkan tahun dan ragam teks/*genre* dan struktur morfologis dan sintaksis internal verba, seperti afiks dan kelas kata). Selanjutnya, @sec-kbbi makalah ini juga secara ringkas mengulas perbedaan antara *VerbInd* dan *Kamus Besar Bahasa Indonesia* (KBBI) daring versi ke-6 (perhatikan @fig-affix-search-kbbi). Tahapan dalam menyusun *VerbInd* juga akan diulas terlebih dahulu (lihat @sec-metode).
 
 
-Keberadaan *VerbInd* awalnya ditujukan untuk menjawab pertanyaan penelitian dalam bidang morfologi, yaitu produktifitas afiksasi verba bahasa Indonesia (perhatikan misalnya @fig-prod-by-genre). Hasil penelitian tersebut kemudian dituliskan menjadi luaran tradisional (artikel bab buku bunga rampai) namun menjadi entitas terpisah dari bank data yang mendampinginya [@rajeg2023a]. Selanjutnya, dalam @sec-hasil, makalah ini juga akan menunjukkan bahwa data kuantitatif dalam *VerbInd* dapat diperluas guna menjawab pertanyaan dalam bidang morfosintaksis bahasa Indonesia [@rajeg_kajian_2024], utamanya interaksi antara konstruksi gramatikal (yaitu konstruksi diatesis morfologis bahasa Indonesia) dan unsur leksikal (yaitu verba yang muncul dalam konstruksi diatesis morfologis tersebut). Berkaitan dengan perluasan penggunaan *VerbInd* pada ranah morfosintaksis, *VerbInd* juga dapat digunakan untuk mengkaji lebih lanjut profil morfologis suatu akar kata yang bisa dikaitkan dengan konsep teoretis tertentu. Misalnya, informasi kuantitatif dalam *VerbInd* dapat digunakan untuk mengukur ketiadaan signifikan (secara statistik) suatu bentuk morfologi dari suatu akar verba, yang dapat mencerminkan konsep bukti negatif (*negative evidence*) suatu struktur lingual [@bowerman_NoNegativeEvidence_1988; @stefanowitsch_NegativeEvidence_2006] (perhatikan @tbl-percaya).
+@sec-paper-output akan menjelaskan bahwa *VerbInd* awalnya ditujukan untuk menjawab pertanyaan penelitian dalam bidang morfologi, yaitu produktifitas afiksasi verba bahasa Indonesia (perhatikan misalnya @fig-prod-by-genre). Hasil penelitian tersebut kemudian dituliskan menjadi luaran tradisional (artikel bab buku bunga rampai) namun menjadi entitas terpisah dari bank data yang mendampinginya [@rajeg2023a]. Selanjutnya, @sec-reuse akan menunjukkan bahwa data kuantitatif dalam *VerbInd* dapat diperluas guna menjawab pertanyaan dalam bidang morfosintaksis bahasa Indonesia [@rajeg_kajian_2024], utamanya interaksi antara konstruksi gramatikal (yaitu konstruksi diatesis morfologis bahasa Indonesia) dan unsur leksikal (yaitu verba yang muncul dalam konstruksi diatesis morfologis tersebut). Berkaitan dengan perluasan penggunaan *VerbInd* pada ranah morfosintaksis, *VerbInd* juga dapat digunakan untuk mengkaji lebih lanjut profil morfologis suatu akar kata yang bisa dikaitkan dengan konsep teoretis tertentu. Misalnya, informasi kuantitatif dalam *VerbInd* dapat digunakan untuk mengukur ketiadaan signifikan (secara statistik) suatu bentuk morfologi dari suatu akar verba, yang dapat mencerminkan konsep **bukti negatif** (*negative evidence*) suatu struktur lingual [@bowerman_NoNegativeEvidence_1988; @stefanowitsch_NegativeEvidence_2006] (perhatikan @tbl-percaya).
 
 # Metode dan teori {#sec-metode}
 
-```{r data-retrieval, message = FALSE, warning = FALSE, echo = FALSE, eval = FALSE}
+```{r data-retrieval, message = FALSE, warning = FALSE, echo = FALSE, eval = TRUE}
 verba <- read_tsv("https://raw.githubusercontent.com/gederajeg/afiksasi-verba-bahasa-indonesia/main/verbs_main.txt") %>% 
   select(year, 
          form = word_form, 
@@ -95,32 +95,33 @@ verba <- read_tsv("https://raw.githubusercontent.com/gederajeg/afiksasi-verba-ba
          affix_wclass = affix_morphind_wclass
          ) %>% 
   mutate(across(c(pref, root_POS, suff, genres), as.factor))
-readr::write_rds(verba, "data/verba.rds")
+# readr::write_rds(verba, "data/verba.rds")
 
 corpussize <- readr::read_lines("https://raw.githubusercontent.com/gederajeg/afiksasi-verba-bahasa-indonesia/refs/heads/main/corpussizes_all.txt") |> 
   prettyNum(big.mark = ".", decimal.mark = ",")
-readr::write_rds(corpussize, "data/corpussize.rds")
+# readr::write_rds(corpussize, "data/corpussize.rds")
 
 genresize <- readr::read_tsv("https://raw.githubusercontent.com/gederajeg/afiksasi-verba-bahasa-indonesia/refs/heads/main/genressizes.txt") |> 
   mutate(genre_size = prettyNum(genre_size, big.mark = ".", decimal.mark = ","))
-readr::write_rds(genresize, "data/genresize.rds")
+# readr::write_rds(genresize, "data/genresize.rds")
 
 yearsize <- readr::read_tsv("https://raw.githubusercontent.com/gederajeg/afiksasi-verba-bahasa-indonesia/refs/heads/main/yearsizes.txt") |> 
   mutate(year_size = prettyNum(year_size, big.mark = ".", decimal.mark = ","))
-readr::write_rds(yearsize, "data/yearsize.rds")
+# readr::write_rds(yearsize, "data/yearsize.rds")
 
 ```
 
 
-```{r data-load, message = FALSE, echo = FALSE}
+```{r data-load, message = FALSE, echo = FALSE, eval = FALSE}
 verba <- readr::read_rds("data/verba.rds")
 corpussize <- readr::read_rds("data/corpussize.rds")
 genresize <- readr::read_rds("data/genresize.rds")
 yearsize <- readr::read_rds("data/yearsize.rds")
 ```
 
+Perkembangan Humaniora Digital (*Digital Humanities*) [@warwick_2012; @drucker_DH_2021] menjadi penyokong pesatnya keberadaan bank data digital dalam bidang Humaniora [mis. bidang agama dan kepercayaan oleh @wattsPulotuDatabaseAustronesian2015; bidang budaya, bahasa, dan lingkungan oleh @kirby_DPLACE_2016; bidang arkeologi oleh @plutniakOpenarcheOcseanInteractiveCatalogue2025]. *VerbInd* sebagai suatu luaran penelitian linguistik non-tradisional mencerminkan tiga pilar utama dalam Humaniora Digital, yaitu (i) bahan (*materials*), (ii) pengolahan (*processing*), dan (iii) penyajian (*presentation*) [@drucker_DH_2021, 3-5; @rajeg_dh_2025]. Bagian ini akan menjelaskan dua dari tiga pilar utama tersebut dan menjelaskan pilar "penyajian" pada @sec-hasil. Secara ringkas, aspek pertama, yaitu "bahan", dalam hal ini merujuk pada sumber teks; aspek kedua ("pengolahan") melibatkan unsur komputasional yang tercermin pada repositori terbuka pengolahan bahan untuk *VerbInd* [@rajeg_supplementary_verb_affix_2023]. Terakhir, aspek "penyajian" memanfaatkan wahana daring (*online platform*) yang memungkinan interaktifitas [@drucker_DH_2021, 3-5].
 
-Data yang terkandung dalam *VerbInd* berasal dari *Korpus Tata Bahasa Indonesia Kontemporer* (Korpus TBIK). Korpus ini dirancang oleh *Pusat Pengembangan dan Pelindungan Bahasa dan Sastra, Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi*. Perancangan Korpus TBIK merupakan bagian dari penyusunan tata bahasa Indonesia berbasis korpus yang diprakarsai oleh instansi yang sama[^1]. Untuk saat ini, Korpus TBIK belum diluncurkan secara terbuka untuk khalayak umum, namun tersedia untuk penulis kontributor tata bahasa Indonesia kontemporer.
+Data yang terkandung dalam *VerbInd* berasal dari *Korpus Tata Bahasa Indonesia Kontemporer* (Korpus TBIK) sebagai sumber teksnya. Korpus ini dirancang oleh *Pusat Pengembangan dan Pelindungan Bahasa dan Sastra, Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi*. Perancangan Korpus TBIK merupakan bagian dari penyusunan tata bahasa Indonesia berbasis korpus yang diprakarsai oleh instansi yang sama[^1]. Untuk saat ini, Korpus TBIK belum diluncurkan secara terbuka untuk khalayak umum, namun tersedia untuk penulis kontributor tata bahasa Indonesia kontemporer.
 
 [^1]: Tautan rekaman seminar hasil untuk topik morfologi <https://www.youtube.com/live/fD70Nhs6vug?si=XTR1Zb3rGyfTKiCl>.
 
@@ -154,7 +155,7 @@ Secara total, terdapat `r read_lines("data/n_file_total.txt")` berkas teks (dala
 
 ![Nukilan salah satu berkas teks (`A1ZZ11001.txt`) (sub-)korpus TBIK ragam Koran yang dibuka melalui peranti *Notepad* di Windows.](figs/nukilan-berkas-teks-TBIK.png){#fig-berkas-tbik}
 
-Dengan besarnya jumlah kata dan berkas korpus TBIK tersebut, pemrosesan secara progamatik perlu dilakukan. Penulis merancang kode pemrograman [@rajeg_supplementary_verb_affix_2023]^[[https://github.com/gederajeg/afiksasi-verba-bahasa-indonesia/blob/main/1-pre-processing-corpus.R](https://github.com/gederajeg/afiksasi-verba-bahasa-indonesia/blob/main/1-pre-processing-corpus.R)] untuk memproses berkas korpus TBIK tersebut menggunakan bahasa pemrograman R [@rcore_2025]. 
+Dengan besarnya jumlah kata dan berkas korpus TBIK tersebut, pemrosesan secara progamatik perlu dilakukan. Penulis merancang kode pemrograman [@rajeg_supplementary_verb_affix_2023] untuk memproses berkas korpus TBIK tersebut menggunakan bahasa pemrograman R [@rcore_2025]; kode tersebut tersedia terbuka pada [https://github.com/gederajeg/afiksasi-verba-bahasa-indonesia/blob/main/1-pre-processing-corpus.R](https://github.com/gederajeg/afiksasi-verba-bahasa-indonesia/blob/main/1-pre-processing-corpus.R). Data korpus TBIK yang telah diolah guna membangun *VerbInd* dan digunakan dalam makalah ini tersedia terbuka pada [https://doi.org/10.5281/zenodo.7812619](https://doi.org/10.5281/zenodo.7812619) [@rajeg_supplementary_verb_affix_2023].
 
 Tahap pertama pengolahan data pra-analisis adalah menghasilkan daftar frekuensi kata (dari bentuk teks paragraf seperti pada @fig-berkas-tbik) untuk tiap ragam teks dan tiap tahun/periode. Tahap utama kedua adalah melakukan analisis (struktur internal) morfologis tiap-tiap kata, utamanya verba yang menjadi fokus penelitian. Pemecahan struktur internal kata secara morfologis awalnya dilakukan secara komputasional programatik menggunakan *MorphInd: Indonesian Morphological Analyzer* [@larasati_indonesian_2011][^2]. @tbl-morphind-sample menampilkan nukilan luaran analisis *MorphInd* untuk kata berawalan *meN*-.
 
@@ -209,15 +210,21 @@ Untuk kasus seperti pada @tbl-unknown-morphind, penyuntingan dan identifikasi st
 
 [^4]: Berkas kode pemrograman R yang mencatat perubahan dan penyuntingan yang dilakukan tersedia pada repositori GitHub [@rajeg_supplementary_verb_affix_2023]; perhatikan berkas kode R dengan inisial no `3-1-..`, `4-..`, dan `6-1-..`.
 
-Penting diperhatikan bahwa pada bidang ilmu Linguistik, keberadaan luaran penelitian non-tradisional seperti, dan yang menginspirasi *VerbInd*, mulai meningkat. Beberapa contohnya adalah set data/bank data leksikal [@bond2014; @list2022; @kaipingLexiRumahOnlineLexical2018; @rajeg_enolex_2024]; bank data morfologi [@denistia2023, untuk nomina; @nomoto_malindo_2018, untuk kamus morfologi, namun tidak mengandung informasi frekuensi, ragam teks, dan tahun seperti yang disajikan oleh *VerbInd*]; ataupun bank data pola gramatikal [@haspelmathCrossGram2025]. Peningkatan ini juga sejalan dengan perkembangan Sains Terbuka (*Open Science*) [@OpenScienceRoyal2025] dan permasalahan keilmuan secara umum, yaitu keterciptaan ulang sains (yaitu, isu *reproducibility*) [@baker1500ScientistsLift2016]. Dalam mengikuti perkembangan ekosistem riset terkini, sebuah manifesto terkait cara memberikan penghargaan/kredit (salah satunya dalam hal menyitir) terhadap jenis luaran non-tradisional bidang linguistik tersebut telah dihasilkan [@berez-kroekerReproducibleResearchLinguistics2018].
+Penting diperhatikan bahwa pada bidang ilmu Linguistik, keberadaan luaran penelitian non-tradisional seperti, dan yang menginspirasi, *VerbInd*, mulai meningkat. Beberapa contohnya adalah set data/bank data leksikal [@bond2014; @list2022; @kaipingLexiRumahOnlineLexical2018; @rajeg_enolex_2024; @krausseEnoLEXDiachronicLexical2024]; bank data morfologi [@denistia2023, untuk nomina; @nomoto_malindo_2018, untuk kamus morfologi, namun tidak mengandung informasi frekuensi, ragam teks, dan tahun seperti yang disajikan oleh *VerbInd*]; ataupun bank data pola gramatikal [@haspelmathCrossGram2025]. Peningkatan bank data tersebut juga sejalan dengan perkembangan Sains Terbuka (*Open Science*) [@OpenScienceRoyal2025] dan permasalahan keilmuan secara umum, yaitu keterciptaan ulang sains (yaitu, isu *reproducibility*) [@baker1500ScientistsLift2016]. Dalam mengikuti perkembangan ekosistem riset terkini, sebuah manifesto terkait cara memberikan penghargaan/kredit (salah satunya dalam hal menyitir) terhadap jenis luaran non-tradisional bidang linguistik tersebut telah dihasilkan [@berez-kroekerReproducibleResearchLinguistics2018].
 
 # Hasil dan pembahasan {#sec-hasil}
 
-Penyiapan bank data leksikal bahasa Indonesia dari Korpus TBIK ditujukan untuk menjawab pertanyaan penelitian pada ranah morfologi bahasa Indonesia, salah satunya adalah produktifitas afiksasi verba [@rajeg2023a] dan nomina [@denistia2023a]^[Bahan pendukung dan data untuk Denistia & Rajeg [-@denistia2023a] dapat diakses melalui [https://osf.io/84zfw/](https://osf.io/84zfw/).]. Kajian produktifitas morfologi [lihat @baayen_2009] dapat dijawab secara lebih sistematis dan terukur dengan keberadaan bank data raya verba bahasa Indonesia, seperti yang diperoleh dari korpus Tata Bahasa Indonesia Kontemporer (TBIK). Keberadaan TBIK memperkaya kajian produktifitas afiksasi karena mengikutkan dimensi jenis teks (@tbl-corpus-genre; @fig-prod-by-genre) dan periode (@tbl-corpus-year), dua variabel tambahan yang dimiliki oleh TBIK, selain ukuran TBIK yang terbilang besar.
+## *VerbInd* dan Luaran Tradisional {#sec-paper-output}
+
+Dalam kaitannya dengan luaran penelitian tradisional, penyiapan bank data leksikal bahasa Indonesia dari Korpus TBIK, seperti *VerbInd*, ditujukan untuk menjawab pertanyaan penelitian pada ranah morfologi bahasa Indonesia, salah satunya adalah produktifitas afiksasi verba [@rajeg2023a] dan nomina [@denistia2023a]^[Bahan pendukung dan data untuk Denistia & Rajeg [-@denistia2023a] dapat diakses melalui [https://osf.io/84zfw/](https://osf.io/84zfw/).]. Kajian produktifitas morfologi [lihat @baayen_2009] dapat dijawab secara lebih sistematis dan terukur dengan keberadaan bank data raya verba bahasa Indonesia, seperti yang diperoleh dari korpus Tata Bahasa Indonesia Kontemporer (TBIK). Keberadaan TBIK memperkaya kajian produktifitas afiksasi karena mengikutkan dimensi jenis teks (@tbl-corpus-genre; @fig-prod-by-genre) dan periode (@tbl-corpus-year), dua variabel tambahan yang dimiliki oleh TBIK, selain ukuran TBIK yang terbilang besar.
 
 ![Produktifitas sub-tipe afiksasi verba bahasa Indonesia utama berdasarkan jumlah bentukan kata unik (*type frequency*) di 12 ragam teks [@rajeg2023a, 17]](figs/10-sub-pattern-types-by-genre.png){#fig-prod-by-genre}
 
-Namun, luaran dari penelitian morfologi berbasis korpus tersebut tidak semata-mata berupa makalah ilmiah dan wawasan mutakhir terkait morfologi bahasa Indonesia. Keberadaan teknologi dan ruang digital memungkinkan pangkalan data suatu penelitian menjadi publikasi tersendiri guna mendampingi makalah ilmiahnya dan digunakan untuk penelitian lebih lanjut. Untuk bank data verba bahasa Indonesia, *VerbInd*, publikasi dilakukan dalam format laman daring terbuka agar dapat diakses masyarakat luas [@rajeg_verbind_2025]. Secara teknis, laman *VerbInd* dibangun melalui bahasa pemrograman R [@rcore_2025]. Pembahasan selanjutnya mencakup beberapa fitur yang dimiliki *VerbInd* ketika diakses (i) dalam format laman daring dan (ii) dalam format data mentahnya (yaitu format `.txt` sebelum disajikan secara daring), yang dapat diolah lebih lanjut untuk menjawab pertanyaan penelitian terkait morfosintaksis.
+Namun, luaran dari penelitian morfologi berbasis korpus tersebut tidak semata-mata berupa makalah ilmiah dan wawasan mutakhir terkait morfologi bahasa Indonesia. Keberadaan teknologi dan ruang digital memungkinkan pangkalan data suatu penelitian menjadi publikasi tersendiri guna mendampingi makalah ilmiahnya dan digunakan untuk penelitian lebih lanjut. @sec-hasil-verbind selanjutnya mengulas fitur-fitur yang saat ini tersedia dalam *VerbInd*.
+
+## Fitur-fitur dalam *VerbInd* {#sec-hasil-verbind}
+
+Untuk bank data verba bahasa Indonesia, *VerbInd*, publikasi dilakukan dalam format laman daring terbuka agar dapat diakses masyarakat luas [@rajeg_verbind_2025]. Secara teknis, laman *VerbInd* dibangun melalui bahasa pemrograman R [@rcore_2025]. Bagian ini mengulas fitur yang dimiliki *VerbInd* ketika diakses dalam format laman daring. @sec-reuse mengulas akses lanjutan dalam format data mentah *VerbInd* (yaitu format `.txt` sebelum disajikan secara daring), yang dapat diolah lebih lanjut, khususnya untuk menjawab pertanyaan penelitian terkait morfosintaksis bahasa Indonesia.
 
 Versi daring dari *VerbInd* memungkinkan pencarian interaktif kata-kata yang terdapat di bank data tersebut[^5]. Sebagai contoh, kita dapat menyaring bank data berdasarkan kriteria tertentu yang dipilih melalui kolom-kolom tertentu. @fig-kan-2012-textbook berikut menunjukkan penyaringan kata-kata berakhiran -*kan* (lihat kolom `suff`, yang merupakan singkatan dari “*suffix*”) untuk tahun 2012 (lihat kolom `year`) pada ragam buku teks (kolom `genres`).
 
@@ -240,6 +247,20 @@ thn <- verba |>
 
 @fig-kan-2012-textbook-adj-tahan menunjukkan penyaringan data untuk kelas kata **a**jektiva pada kolom `root_POS`, khususnya untuk bentuk *tahan* (kolom `root`). Dari luaran kriteria penyaringan data pada @fig-kan-2012-textbook dan @fig-kan-2012-textbook-adj-tahan, kita dapat melihat bahwa terdapat dua bentuk (kolom `form`) kata turunan untuk akar kata ajektiva *tahan* yang diikuti akhiran *-kan* beserta frekuensinya (kolom `freq`) pada sub-korpus buku teks di tahun 2012: bentuk aktif *mempertahankan* secara signifikan lebih kerap digunakan (N=`r pull(filter(thn, str_detect(form, "^mem")), freq)`) dibandingkan bentuk pasif *dipertahankan* (N=`r pull(filter(thn, str_detect(form, "^diper")), freq)`) (*p*~Binomial~ ~two-tailed~ = `r toupper(format(binom.test(thn$freq)$p.value, scientific = TRUE, digits = 3))`).
 
+Fitur pencarian kedua dari *VerbInd* adalah pencarian data keseluruhan bentuk verba tanpa dipecah berdasarkan tahun dan jenis teks (*genres*). Fitur ini tersedia pada tabel bernama **Frekuensi verba bahasa Indonesia keseluruhan** (@fig-freq-all-senang) (tabel kedua di bawah tabel berjudul **Frekuensi verba bahasa Indonesia menurut ragam teks dan tahun**). 
+
+![Penyaringan data berdasarkan kolom *`root`*](figs/freq-all-senang.png){#fig-freq-all-senang}
+
+@fig-freq-all-senang menunjukkan model penjaringan data melalui fitur kedua, utamanya berdasarkan kolom `root` untuk menangkap bentukan verba turunan (muncul pada kolom `form`) dari akar kata *senang*. Kolom `freq` menunjukkan frekuensi kemunculan verba turunan pada kolom `form`.
+
+Selanjutnya, tanda segitiga hitam di sebelah kiri bentuk *menyenangkan* pada @fig-freq-all-senang mengindikasikan bahwa frekuensi untuk *menyenangkan* merupakan gabungan dari lebih dari satu bentuk ortografis untuk *menyenangkan*. Tanda segitiga tersebut dapat diklik untuk menampilkan bentuk-bentuk ortografis apa saja yang tercakup (perhatikan area di antara warna hijau stabilo pada @fig-freq-all-senang-orth).
+
+![Variasi ortografis suatu bentuk verba](figs/freq-all-senang-orth.png){#fig-freq-all-senang-orth}
+
+Tampilan setelah mengklik tanda segitiga hitam juga berupa tabel bawahan (*sub-table*) dengan kolom hampir sama dengan tampilan pada @fig-kan-2012-textbook (tanpa kolom `root` yang muncul di tabel utama, dan tanpa kolom `year` dan `genres` yang tidak relevan di tabel ini). Kolom `orth_var` menunjukkan variasi bentuk (untuk verba pada kolom `form` di tabel utama) dan frekuensinya (dalam tanda kurung). Variasi ortografis yang ditampilkan pada @fig-freq-all-senang-orth mungkin terjadi akibat kesalahan pengetikan (seperti bentuk *menyenagkan* yang muncul sekali pada @fig-freq-all-senang-orth).
+
+## *VerbInd* dan *Kamus Besar Bahasa Indonesia* {#sec-kbbi}
+
 Format *database* seperti *VerbInd* memungkinkan pencarian unsur pembentuk kata yang lebih spesifik, seperti menyaring bentukan kata berdasarkan afiks tertentu (@fig-kan-2012-textbook). Sebaliknya, fitur ini belum tersedia pada Kamus Besar Bahasa Indonesia (KBBI) edisi ke-6 versi daring. Pengguna terdaftar untuk KBBI VI daring dapat mencari bentuk afiks tertentu (@fig-affix-search1) namun ketika afiks tersebut dipilih (@fig-affix-search2), pengguna akan dibawa ke entri definisi afiks tersebut (@fig-affix-search3), daripada ditampilkan semua bentukan kata dengan afiks yang dipilih.
 
 ::: {#fig-affix-search-kbbi layout-ncol=1}
@@ -256,9 +277,9 @@ Pencarian kategori afiks di Kamus Besar Bahasa Indonesia (KBBI) VI Daring
 
 Untuk pengembangan selanjutnya, fitur yang diakomodir model database seperti *VerbInd* (mengeluarkan semua bentukan kata dengan afiks tertentu) dapat dipadukan dengan fitur kamus daring seperti KBBI VI daring (yang mengandung definisi/fungsi suatu afiks serta contoh-contoh kalimat penggunaan nyata kata turunan dengan afiks tertentu). 
 
+## Penggunaan lebih lanjut (*re-use*) terhadap *VerbInd* {#sec-reuse}
 
-
-Pembahasan berikutnya mengulas pemanfaatan lebih lanjut dari data yang melandasi *VerbInd* guna menjawab pertanyaan linguistik melalui pendekatan kuantitatif. Data utama *VerbInd* tersedia terbuka dalam format `.txt` atau teks biasa (*plain text*) dengan tiap-tiap kolom dipisahkan oleh penanda `tab` [berkas bernama `verbs_main.txt` pada @rajeg_supplementary_verb_affix_2023] (@fig-verb-raw-db) dan dapat dibuka di program seperti *LibreOffice Calc* (@fig-verb-raw-libre).
+Pembahasan berikutnya mengulas pemanfaatan lebih lanjut dari data yang melandasi *VerbInd*. Pemanfaatan pertama adalah dalam hal penelitian guna menjawab pertanyaan linguistik melalui pendekatan kuantitatif. Data utama *VerbInd* tersedia terbuka dalam format `.txt` atau teks biasa (*plain text*) dengan tiap-tiap kolom dipisahkan oleh penanda `tab` [berkas bernama `verbs_main.txt` pada @rajeg_supplementary_verb_affix_2023] (@fig-verb-raw-db) dan dapat dibuka di program seperti *LibreOffice Calc* (@fig-verb-raw-libre).
 
 
 
@@ -273,7 +294,7 @@ Tampilan data utama *VerbInd* [@rajeg_supplementary_verb_affix_2023]
 :::
 
 
-Format data seperti *tab-separated plain text* pada (@fig-verb-raw-web) telah diolah secara komputasional untuk analisis linguistik kuantitatif dalam konteks kajian morfologi, utamanya analisis produktifitas morfologis afiksasi verba bahasa Indonesia [@rajeg2023a] (@fig-prod-by-genre), yang menjadi tujuan awal *VerbInd* (@sec-intro dan @sec-hasil).
+Format data seperti *tab-separated plain text* (@fig-verb-raw-web) telah diolah secara komputasional untuk analisis linguistik kuantitatif dalam konteks kajian morfologi, utamanya analisis produktifitas morfologis afiksasi verba bahasa Indonesia [@rajeg2023a] (@fig-prod-by-genre), yang menjadi tujuan awal *VerbInd* (@sec-paper-output).
 
 Pemanfaatan lain dari data landasan dalam *VerbInd* adalah mengkaji interaksi antara unsur leksikal dan konstruksi gramatikal [@stefanowitsch_2009], dalam konteks kajian morfosintaksis kuantitatif bahasa Indonesia. Sebagai contoh, data frekuensi verba dalam *VerbInd* telah diolah lebih lanjut untuk membandingkan preferensi leksikal dua konstruksi diatesis bahasa Indonesia, yaitu diatesis aktif *meN-* dan pasif *di-* [@rajeg_kajian_2024]^[Pemanfaatan *VerbInd* ini disebutkan secara eksplisit pada [Bagian 3](https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-metodologi) dalam Rajeg & Artawa [-@rajeg_kajian_2024]. Kajian ini juga merupakan kerja lanjutan penyusunan Tata Bahasa Indonesia Kontemporer untuk topik "Sintaksis", yang seminarnya dapat disaksikan di kanal *YouTube* melalui [tautan ini](https://www.youtube.com/live/y7E0vey1Xsk?si=HSwLV87PDBIIzc6t).]. Untuk tujuan tersebut, Rajeg dan Artawa [-@rajeg_kajian_2024] menerapkan "Analisis Koleksem Khas" (*Distinctive Collexeme Analysis* [selanjutnya disebut DCA])^[Ulasan *Distinctive Collexeme Analysis* dalam bahasa Indonesia dapat dilihat dalam Rajeg & Artawa [-@rajeg_kajian_2024, Sub-bagian 4.3] melalui [tautan ini](https://gederajeg.github.io/diatesis-bahasa-indonesia/#sec-dca), Rajeg [-@rajeg_LI_2020], dan Rajeg & Rajeg [-@rajeg_koleksemkhas_2019]], salah satu ragam teknik kuantitatif di bawah payung metode "Analisis Kolostruksional" (*Collostructional Analysis*) [@stefanowitsch_collo_2013; @hilpert_collo_2014; @gries_collo_2023]. DCA dalam hal ini digunakan untuk mengukur ketimpangan statistik penggunaan suatu akar verba dengan diatesis *meN-* dan *di-*. Pengukuran statistik dalam DCA [@rajeg_kajian_2024, Sub-bagian 4.3.1] dilakukan untuk semua akar verba yang paling sedikit muncul sekali dengan salah satu dari kedua diatesis, dan pengukuran berulang inilah yang difasilitasi secara komputasional dengan merancang kode pemrograman melalui bahasa pemrograman R. 
 
@@ -315,12 +336,18 @@ source("asymmetric-voice-lexicon.R")
 
 Ketiadaan bentuk *mempercaya* dapat dijelaskan secara tipologi melalui konsep "alternasi diatesis simetrikal" ("*symmetrical voice alternation*"), yang merupakan salah satu ciri unik rumpun bahasa Austronesia [@foley_1998; @arka_2003; @himmelmann_2005; @riesberg_2014]. Dalam alternasi diatesis simetrikal, seperti halnya dalam bahasa Indonesia, bentuk verbanya sama-sama (yaitu secara "simetris") dimarkahi secara morfologis, yaitu dengan awalan *meN*- dan *di*-. Oleh karenanya, secara morfologis, sulit menentukan bentuk tak bermarkah mana yang menjadi bentuk dasar untuk menurunkan bentuk lainnya [@foley_1998, butir ke-2 bagian 3.3; @himmelmann_2005, 112]. Dalam kasus bentuk *di*-*percaya*, secara morfologis, dan dalam konteks diatesis simetrikal, bentuk tersebut bisa langsung dibangun dengan menggabungkan awalan *di*- dan akar *percaya* tanpa perlu mengasumsikan bahwa bentuk aktif *mem*-*percaya* (yang tidak ditemukan dalam data sampel) adalah bentuk dasar awalnya.
 
+Terakhir, selain untuk penelitian, potensi pemanfaatan kedua dari *VerbInd* adalah dalam bidang pengajaran bahasa Indonesia, utamanya untuk penutur asing. Sebagai contoh, informasi frekuensi dan bentuk-bentuk yang ditemukan dalam *VerbInd* dapat digunakan untuk menjelaskan tingkat kelaziman suatu bentuk verba turunan secara lebih terukur objektif berdasarkan data korpus empiris. 
+
+## Pemutakhiran *VerbInd* {#sec-future-plan}
+
+*VerbInd* masih memerlukan sejumlah pemutakhiran ke depannya. Yang pertama, validasi dan penyuntingan manual hasil pemecahan morfologis *MorphInd* masih perlu terus dilanjutkan. Selanjutnya, tampilan web berbasis berkas HTML seperti saat ini perlu diubah menjadi aplikasi daring, misalnya menggunakan wahana *Shiny* melalui bahasa pemrograman R [lih. mis. @krausseEnoLEXDiachronicLexical2024]. Aplikasi daring ini memungkinkan interaktifitas yang lebih beragam dalam mendukung pengembangan selanjutnya, yaitu menampilkan contoh kalimat dari korpus untuk suatu bentuk verba.
+
 # Simpulan {#sec-simpulan}
 
 Ekosistem penelitian abad ke-21 mulai memperluas cakupan jenis luaran penelitian yang dipertimbangkan dalam mekanisme penilaian peneliti(an). Selain luaran tradisional, seperti buku dan artikel ilmiah, luaran non-tradisional, seperti kode pemrograman dan bank data, adalah entitas mandiri yang berbeda dengan, dan dapat mendampingi/dimanfaatkan dalam, luaran tradisional tersebut. Makalah ini mengulas salah satu model dan jenis luaran non-tradisional dalam linguistik, yaitu bank data verba bahasa Indonesia (*VerbInd*) (@sec-hasil), dan kaitannya dengan luaran tradisional, yaitu tulisan ilmiah.
 
-Keberadaan dan tahapan penyusunan *VerbInd* (@sec-metode) beriringan dengan tujuan penelitian tradisional penulis, yaitu menjawab rumusan masalah penelitian linguistik (khususnya diawali dengan kajian morfologi (@fig-prod-by-genre)). Makalah ini juga menunjukkan bagaimana informasi dari bank data yang sama dapat digunakan lebih lanjut (dan diolah secara komputasional kuantitatif) untuk menjawab rumusan masalah penelitian berbeda pada ranah morfosintaksis (@fig-percaya)). Kedua penelitian tersebut kemudian dituliskan menjadi luaran tradisional biasa (yaitu artikel bab buku bunga rampai).
+Keberadaan dan tahapan penyusunan *VerbInd* (@sec-metode) beriringan dengan tujuan penelitian tradisional penulis, yaitu menjawab rumusan masalah penelitian linguistik (khususnya diawali dengan kajian morfologi (@fig-prod-by-genre)). Makalah ini juga menunjukkan bagaimana informasi dari bank data yang sama dapat digunakan lebih lanjut (dan diolah secara komputasional kuantitatif) untuk menjawab rumusan masalah penelitian berbeda pada ranah morfosintaksis (@fig-percaya)). Kedua penelitian tersebut kemudian dituliskan menjadi luaran tradisional biasa (yaitu artikel bab buku bunga rampai). Makalah ini juga mengulas secara ringkas potensi pemanfaatan *VerbInd* dalam pengajaran (morfologi) verba bahasa Indonesia untuk penutur asing.
 
-Keberadaan teknologi digital-komputasional, perkembangan ekosistem riset terkini, dan meluasnya gerakan Sains Terbuka (*Open Science*) mewadahi penerbitan/diseminasi terbuka dan interaktif sumber data (yang melandasi luaran tradisional) sebagai entitas bank data mandiri. Dari sudut pandang bidang linguistik, perkembangan kajian linguistik mengandalkan data raya dan peranti komputasional memungkinkan luaran penelitian non-tradisional terbuka berorientasi teknologi, seperti bank data (CITE LEXIBANK), peranti lunak (MORPHIND + PARACORP), ataupun tutorial komputasional.
+Keberadaan teknologi digital-komputasional, perkembangan ekosistem riset terkini, dan meluasnya gerakan Sains Terbuka (*Open Science*) mewadahi penerbitan/diseminasi terbuka dan interaktif sumber data (yang melandasi luaran tradisional) sebagai entitas bank data mandiri. Dari sudut pandang bidang linguistik, perkembangan kajian linguistik mengandalkan data raya dan peranti komputasional memungkinkan luaran penelitian non-tradisional terbuka berorientasi teknologi, seperti bank data, peranti lunak, ataupun tutorial komputasional daring.
 
 # Daftar Pusaka {-}
