@@ -31,4 +31,8 @@ Repositori ini [@rajegMaterialPendukungDan2025] dapat disitir dalam publikasi de
 
 > Rajeg, G. P. W. (2025). *Material pendukung dan kode pemrograman R untuk ‘Luaran Penelitian Non-Tradisional dalam Linguistik di Era Digital’* (Version 1.0.0) [R Quarto]. https://doi.org/10.17605/OSF.IO/GN29Q
 
+## Pengantar
+
+Makalah ini adalah bentuk tulisan dari paparan penulis [@rajegLuaranPenelitianNonTradisional2025] sebagai (salah satu) narasumber utama pada [Seminar Nasional Bahasa, Sastra, dan Budaya (SNBSB)](https://www.instagram.com/p/DK4kRdNSgt3/?igsh=bm15Y3h4b3VnYzk1), [12 September 2025](https://fib.unud.ac.id/posts/fib-unud-holds-national-seminar-on-language-literature-and-culture-snbsb-2025-as-a-series-of-bkfib-2025-activities) di Fakultas Ilmu Budaya, Universitas Udayana. Penulis berterima kasih atas masukan dan pertanyaan dari peserta [seminar](https://www.instagram.com/reel/DOialqFkvGR/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==) serta Karlina Denisita (Universitas Sebelas Maret) sebagai kolaborator dalam membangun *VerbInd* [@rajeg_verbind_2025] yang melandasi makalah bab buku kami [@rajeg2023a]. Rekaman paparan penulis tersedia terbuka pada tautan [https://youtu.be/xCaeV2jLvSo](https://youtu.be/xCaeV2jLvSo).
+
 ### Referensi {-}
