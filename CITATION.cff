@@ -1,0 +1,51 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Material pendukung dan kode pemrograman R untuk "Luaran
+  Penelitian Non-Tradisional dalam Linguistik di Era
+  Digital"
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Gede Primahadi Wijaya
+    family-names: Rajeg
+    email: primahadi_wijaya@unud.ac.id
+    affiliation: Udayana University
+    orcid: 'https://orcid.org/0000-0002-2047-8621'
+identifiers:
+  - type: doi
+    value: 10.17605/OSF.IO/GN29Q
+    description: Open Science Framework (OSF) repository
+repository-code: 'https://github.com/complexico/verbind-snbsb2025'
+abstract: >-
+  The 21st-century research ecosystem highlights the
+  importance of non-traditional outputs such as datasets and
+  software, alongside articles and books. In the Humanities,
+  digital technologies enable data to be presented more
+  openly through online databases. This paper introduces
+  VerbInd, an open-access online database of morphologically
+  complex verbs in Indonesian, built from corpus texts and
+  processed through computational morphological parsing with
+  further manual verification and editing. The paper
+  demonstrates the use of VerbInd in quantitative research
+  on Indonesian verbal morphology and morphosyntax
+  (particularly voice alternation), resulting in traditional
+  outputs, namely book chapters. It also briefly compares
+  VerbInd with the sixth edition of the online Kamus Besar
+  Bahasa Indonesia (KBBI), emphasizing their potential
+  complementarity as linguistic research resources.
+keywords:
+  - digital humanities
+  - computational linguistics
+  - corpus linguistics
+  - quantitative linguistics
+  - linguistic database
+  - lexical database
+license: CC-BY-NC-SA-4.0
+commit: da70797551ffccf09669b5b86bedc35bde668163
+version: 1.0.0
+date-released: '2025-10-04'
