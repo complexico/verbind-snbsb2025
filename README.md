@@ -17,6 +17,7 @@ BY-NC-SA 4.0
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a>
 </p>
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17927725.svg)](https://doi.org/10.5281/zenodo.17927725)
 [![](https://img.shields.io/badge/OSF-10.17605/OSF.IO/GN29Q-green.svg)](https://doi.org/10.17605/OSF.IO/GN29Q)
 
 <!-- badges: end -->
@@ -30,7 +31,7 @@ APA 7<sup>th</sup>):
 > Rajeg, G. P. W. (2025). *Material pendukung dan kode pemrograman R
 > untuk ‘Luaran Penelitian Non-Tradisional dalam Linguistik di Era
 > Digital’* (Version 1.0.0) \[R Quarto\].
-> <https://doi.org/10.17605/OSF.IO/GN29Q>
+> <https://doi.org/10.5281/zenodo.17927725>
 
 ## Pengantar
 
@@ -72,7 +73,7 @@ Bahasa, Sastra, dan Budaya (SNBSB).
 Rajeg, G. P. W. (2025). *Material pendukung dan kode pemrograman R untuk
 "Luaran Penelitian Non-Tradisional dalam Linguistik di Era Digital"*
 (Version 1.0.0) \[Computer software\].
-<https://doi.org/10.17605/OSF.IO/GN29Q> (Original work published 2025)
+<https://doi.org/10.5281/zenodo.17927725> (Original work published 2025)
 
 </div>
 
