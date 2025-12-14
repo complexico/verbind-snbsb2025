@@ -43,11 +43,15 @@ satu) narasumber utama pada [Seminar Nasional Bahasa, Sastra, dan Budaya
 di Fakultas Ilmu Budaya, Universitas Udayana. Penulis berterima kasih
 atas masukan dan pertanyaan dari peserta
 [seminar](https://www.instagram.com/reel/DOialqFkvGR/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==)
-serta Karlina Denisita (Universitas Sebelas Maret) sebagai kolaborator
+serta Karlina Denistia (Universitas Sebelas Maret) sebagai kolaborator
 dalam membangun *VerbInd* ([Rajeg & Denistia,
 2023b](#ref-rajeg_verbind_2025)) yang melandasi makalah bab buku kami
-([Rajeg & Denistia, 2023a](#ref-rajeg2023a)). Rekaman paparan penulis
-tersedia terbuka pada tautan <https://youtu.be/xCaeV2jLvSo>.
+([Rajeg & Denistia, 2023a](#ref-rajeg2023a)). Penyelesaian *VerbInd*
+didukung secara parsial oleh hibah dari *Arts and Humanities Research
+Council*, UK (AHRC; Nomor Hibah:
+[AH/W007290/1](https://gtr.ukri.org/projects?ref=AH%2FW007290%2F1)).
+Rekaman paparan penulis tersedia terbuka pada tautan
+<https://youtu.be/xCaeV2jLvSo>.
 
 ### Referensi
 
