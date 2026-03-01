@@ -17,12 +17,22 @@ BY-NC-SA 4.0
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a>
 </p>
 
+[![URL](https://img.shields.io/badge/URL-Article-red.svg)](https://ejournal1.unud.ac.id/index.php/humanis/article/view/2576)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17927725.svg)](https://doi.org/10.5281/zenodo.17927725)
 [![](https://img.shields.io/badge/OSF-10.17605/OSF.IO/GN29Q-green.svg)](https://doi.org/10.17605/OSF.IO/GN29Q)
 
 <!-- badges: end -->
 
 ## Cara menyitir
+
+Makalah yang dilandasi atas material dalam repositori ini ([Rajeg,
+2026](#ref-rajegLuaranPenelitianNonTradisional2026)) dapat dikutip
+dengan cara sebagai berikut (dalam format APA 7<sup>th</sup>):
+
+> Rajeg, G. P. W. (2026). Luaran Penelitian Non-Tradisional dalam
+> Linguistik di Era Digital: Studi Kasus *VerbInd* Pangkalan Data Verba
+> Bahasa Indonesia Berbasis Korpus. *Humanis*, 30(1), 62–80.
+> [https://doi.org/10.24843/JH.2026.v30.i01.p05](https://ejournal1.unud.ac.id/index.php/humanis/article/view/2576)
 
 Repositori ini ([Rajeg, 2025/2025](#ref-rajegMaterialPendukungDan2025))
 dapat disitir dalam publikasi dengan cara sebagai berikut (dalam format
@@ -35,7 +45,9 @@ APA 7<sup>th</sup>):
 
 ## Pengantar
 
-Makalah ini adalah bentuk tulisan dari paparan penulis ([Rajeg,
+[Makalah
+ini](https://ejournal1.unud.ac.id/index.php/humanis/article/view/2576)
+adalah bentuk tulisan dari paparan penulis ([Rajeg,
 2025](#ref-rajegLuaranPenelitianNonTradisional2025)) sebagai (salah
 satu) narasumber utama pada [Seminar Nasional Bahasa, Sastra, dan Budaya
 (SNBSB)](https://www.instagram.com/p/DK4kRdNSgt3/?igsh=bm15Y3h4b3VnYzk1),
@@ -74,6 +86,15 @@ Rajeg, G. P. W. (2025). *Material pendukung dan kode pemrograman R untuk
 "Luaran Penelitian Non-Tradisional dalam Linguistik di Era Digital"*
 (Version 1.0.0) \[Computer software\].
 <https://doi.org/10.5281/zenodo.17927725> (Original work published 2025)
+
+</div>
+
+<div id="ref-rajegLuaranPenelitianNonTradisional2026" class="csl-entry">
+
+Rajeg, G. P. W. (2026). Luaran Penelitian Non-Tradisional dalam
+Linguistik di Era Digital: Studi Kasus *VerbInd* Pangkalan Data Verba
+Bahasa Indonesia Berbasis Korpus. *Humanis*, *30*(1), 62–80.
+<https://doi.org/10.24843/JH.2026.v30.i01.p05>
 
 </div>
 

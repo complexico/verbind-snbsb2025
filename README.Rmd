@@ -21,11 +21,16 @@ knitr::opts_chunk$set(
 
 <p xmlns:cc="http://creativecommons.org/ns#" >Repositori ini berlisensi <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17927725.svg)](https://doi.org/10.5281/zenodo.17927725) [![](https://img.shields.io/badge/OSF-10.17605/OSF.IO/GN29Q-green.svg)](https://doi.org/10.17605/OSF.IO/GN29Q)
+
+[![URL](https://img.shields.io/badge/URL-Article-red.svg)](https://ejournal1.unud.ac.id/index.php/humanis/article/view/2576) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17927725.svg)](https://doi.org/10.5281/zenodo.17927725) [![](https://img.shields.io/badge/OSF-10.17605/OSF.IO/GN29Q-green.svg)](https://doi.org/10.17605/OSF.IO/GN29Q)
 
 <!-- badges: end -->
 
 ## Cara menyitir
+
+Makalah yang dilandasi atas material dalam repositori ini [@rajegLuaranPenelitianNonTradisional2026] dapat dikutip dengan cara sebagai berikut (dalam format APA 7^th^):
+
+> Rajeg, G. P. W. (2026). Luaran Penelitian Non-Tradisional dalam Linguistik di Era Digital: Studi Kasus *VerbInd* Pangkalan Data Verba Bahasa Indonesia Berbasis Korpus. *Humanis*, 30(1), 62–80. [https://doi.org/10.24843/JH.2026.v30.i01.p05](https://ejournal1.unud.ac.id/index.php/humanis/article/view/2576)
 
 Repositori ini [@rajegMaterialPendukungDan2025] dapat disitir dalam publikasi dengan cara sebagai berikut (dalam format APA 7^th^):
 
@@ -33,6 +38,6 @@ Repositori ini [@rajegMaterialPendukungDan2025] dapat disitir dalam publikasi de
 
 ## Pengantar
 
-Makalah ini adalah bentuk tulisan dari paparan penulis [@rajegLuaranPenelitianNonTradisional2025] sebagai (salah satu) narasumber utama pada [Seminar Nasional Bahasa, Sastra, dan Budaya (SNBSB)](https://www.instagram.com/p/DK4kRdNSgt3/?igsh=bm15Y3h4b3VnYzk1), [12 September 2025](https://fib.unud.ac.id/posts/fib-unud-holds-national-seminar-on-language-literature-and-culture-snbsb-2025-as-a-series-of-bkfib-2025-activities) di Fakultas Ilmu Budaya, Universitas Udayana. Penulis berterima kasih atas masukan dan pertanyaan dari peserta [seminar](https://www.instagram.com/reel/DOialqFkvGR/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==) serta Karlina Denistia (Universitas Sebelas Maret) sebagai kolaborator dalam membangun *VerbInd* [@rajeg_verbind_2025] yang melandasi makalah bab buku kami [@rajeg2023a]. Penyelesaian *VerbInd* didukung secara parsial oleh hibah dari *Arts and Humanities Research Council*, UK (AHRC; Nomor Hibah: [AH/W007290/1](https://gtr.ukri.org/projects?ref=AH%2FW007290%2F1)). Rekaman paparan penulis tersedia terbuka pada tautan [https://youtu.be/xCaeV2jLvSo](https://youtu.be/xCaeV2jLvSo).
+[Makalah ini](https://ejournal1.unud.ac.id/index.php/humanis/article/view/2576) adalah bentuk tulisan dari paparan penulis [@rajegLuaranPenelitianNonTradisional2025] sebagai (salah satu) narasumber utama pada [Seminar Nasional Bahasa, Sastra, dan Budaya (SNBSB)](https://www.instagram.com/p/DK4kRdNSgt3/?igsh=bm15Y3h4b3VnYzk1), [12 September 2025](https://fib.unud.ac.id/posts/fib-unud-holds-national-seminar-on-language-literature-and-culture-snbsb-2025-as-a-series-of-bkfib-2025-activities) di Fakultas Ilmu Budaya, Universitas Udayana. Penulis berterima kasih atas masukan dan pertanyaan dari peserta [seminar](https://www.instagram.com/reel/DOialqFkvGR/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==) serta Karlina Denistia (Universitas Sebelas Maret) sebagai kolaborator dalam membangun *VerbInd* [@rajeg_verbind_2025] yang melandasi makalah bab buku kami [@rajeg2023a]. Penyelesaian *VerbInd* didukung secara parsial oleh hibah dari *Arts and Humanities Research Council*, UK (AHRC; Nomor Hibah: [AH/W007290/1](https://gtr.ukri.org/projects?ref=AH%2FW007290%2F1)). Rekaman paparan penulis tersedia terbuka pada tautan [https://youtu.be/xCaeV2jLvSo](https://youtu.be/xCaeV2jLvSo).
 
 ### Referensi {-}
